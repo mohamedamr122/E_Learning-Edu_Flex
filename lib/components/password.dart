@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyPasswordField extends StatefulWidget {
-  MyPasswordField({
+  const MyPasswordField({
     super.key,
     required this.text,
     required this.color,
@@ -10,8 +10,8 @@ class MyPasswordField extends StatefulWidget {
   });
   final String text;
   final Color color;
-  TextEditingController? controller;
-  String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   State<MyPasswordField> createState() => _MyPasswordFieldState();

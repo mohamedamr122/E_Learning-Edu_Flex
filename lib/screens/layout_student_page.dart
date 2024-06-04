@@ -27,6 +27,7 @@ class _LayoutStudentPageState extends State<LayoutStudentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        unselectedFontSize: 12,
         selectedLabelStyle: const TextStyle(color: Colors.amber),
         selectedItemColor: ColorManager.mainGreen,
         currentIndex: _selectedIndex,
@@ -43,7 +44,6 @@ class _LayoutStudentPageState extends State<LayoutStudentPage> {
           BottomNavigationBarItem(
             label: 'Account',
             icon: Image.asset(
-              fit: BoxFit.cover,
               'assets/icons/account.png',
               color:
                   _selectedIndex == 0 ? ColorManager.mainGreen : Colors.black,

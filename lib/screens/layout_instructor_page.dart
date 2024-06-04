@@ -1,5 +1,4 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/screens/search_page.dart';
 import 'package:new_eduflex/screens/toprating_page.dart';
@@ -16,7 +15,7 @@ class LayoutInstructorPage extends StatefulWidget {
 }
 
 class _LayoutInstructorPageState extends State<LayoutInstructorPage> {
-  final NavPages = [
+  final navPages = [
     const AccountPage(),
     const SearchPage(),
     const InstructorHomePage(),
@@ -26,44 +25,58 @@ class _LayoutInstructorPageState extends State<LayoutInstructorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        color: ColorManager.lightGray,
-        buttonBackgroundColor: ColorManager.mainGreen,
-        backgroundColor: ColorManager.mainGreen,
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedFontSize: 12,
+        selectedLabelStyle: const TextStyle(color: Colors.amber),
+        selectedItemColor: ColorManager.mainGreen,
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        elevation: 0,
+        selectedFontSize: 13,
+        backgroundColor: Colors.grey[60],
         onTap: (value) {
           setState(() {
             _selectedIndex = value;
           });
         },
         items: [
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/account.png',
-                color: _selectedIndex == 0 ? Colors.white : Colors.black,
-              ),
-              label: 'Account'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/search.png',
-                color: _selectedIndex == 1 ? Colors.white : Colors.black,
-                height: 25,
-              ),
-              label: 'Search'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/home.png',
-                color: _selectedIndex == 2 ? Colors.white : Colors.black,
-              ),
-              label: 'Home'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/star.png',
-                color: _selectedIndex == 3 ? Colors.white : Colors.black,
-              ),
-              label: 'Top Rating'),
+          BottomNavigationBarItem(
+            label: 'Account',
+            icon: Image.asset(
+              'assets/icons/account.png',
+              color:
+                  _selectedIndex == 0 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Search',
+            icon: Icon(
+              size: 30,
+              Icons.search_outlined,
+              color:
+                  _selectedIndex == 1 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Image.asset(
+              'assets/icons/home.png',
+              color:
+                  _selectedIndex == 2 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Top Rating',
+            icon: Icon(
+              size: 35,
+              Icons.star_border_rounded,
+              color:
+                  _selectedIndex == 3 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
         ],
       ),
-      body: NavPages[_selectedIndex],
+      body: navPages[_selectedIndex],
     );
   }
 }

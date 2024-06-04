@@ -40,7 +40,7 @@ class _EduFlexState extends State<EduFlex> {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LayoutStudentPage(),
+        home: LayoutInstructorPage(),
       ),
     );
   }

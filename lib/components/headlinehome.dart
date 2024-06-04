@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HeadLineText extends StatelessWidget {
-   HeadLineText({super.key,required this.text});
-  String text;
+  const HeadLineText({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {

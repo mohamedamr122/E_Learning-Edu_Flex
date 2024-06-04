@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ItemButton extends StatelessWidget {
-  ItemButton(
+  const ItemButton(
       {super.key,
       required this.onPressed,
       required this.text,
       required this.icon});
-  void Function()? onPressed;
-  String text;
-  Icon icon;
+  final void Function()? onPressed;
+  final String text;
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {

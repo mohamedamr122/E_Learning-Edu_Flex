@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/classes/class_color.dart';
 
 class LevelsSelected extends StatelessWidget {
-  String text;
-  void Function()? onPressed;
-  LevelsSelected({
+  final String text;
+  final void Function()? onPressed;
+  const LevelsSelected({
     super.key,
     required this.text,
     required this.onPressed,

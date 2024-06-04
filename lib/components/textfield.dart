@@ -10,10 +10,10 @@ class MyTextField extends StatelessWidget {
     required this.validator,
   });
   final String textHint;
-  IconButton? icon;
-  GlobalKey<FormState> formState = GlobalKey();
-  TextEditingController? controller;
-  String? Function(String?)? validator;
+  final IconButton? icon;
+  final GlobalKey<FormState> formState = GlobalKey();
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
   final bool obscureText;
   @override
   Widget build(BuildContext context) {

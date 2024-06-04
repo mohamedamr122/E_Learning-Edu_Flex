@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LevelsClass extends StatelessWidget {
-  LevelsClass({super.key, required this.text, required this.onTap});
-  String text;
-  void Function()? onTap;
+  const LevelsClass({super.key, required this.text, required this.onTap});
+  final String text;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,13 @@ class LevelsClass extends StatelessWidget {
           border: Border.all(color: Colors.black),
         ),
         child: Center(
-          child: Text(text,style: const TextStyle(fontSize: 12,fontWeight: FontWeight.w700,fontFamily: 'Roboto'),),
+          child: Text(
+            text,
+            style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Roboto'),
+          ),
         ),
       ),
     );

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../classes/class_color.dart';
 
 class SubjectsText extends StatelessWidget {
-  String text;
-  SubjectsText({super.key, required this.text});
+  final String text;
+  const SubjectsText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

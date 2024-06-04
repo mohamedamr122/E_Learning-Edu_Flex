@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GradientText extends StatelessWidget {
-  GradientText({super.key, required this.text});
-  String text;
+  const GradientText({super.key, required this.text});
+  final String text;
   final LinearGradient _gradient = const LinearGradient(colors: [
     Color(0xff00BF63),
     Color(0xffF2F2F2),
