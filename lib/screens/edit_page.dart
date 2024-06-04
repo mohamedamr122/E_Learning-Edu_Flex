@@ -38,7 +38,8 @@ class _EditPageState extends State<EditPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: MyTextField(
+                  child: MyTextField(                            obscureText: false,
+
                     validator: null,
                     controller: null,
                     textHint: 'Mohanad',
@@ -49,7 +50,8 @@ class _EditPageState extends State<EditPage> {
                   width: 10,
                 ),
                 Expanded(
-                  child: MyTextField(
+                  child: MyTextField(                            obscureText: false,
+
                     validator: null,
                     controller: null,
                     textHint: 'Waleed',
@@ -61,7 +63,8 @@ class _EditPageState extends State<EditPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
-            child: MyTextField(
+            child: MyTextField(                            obscureText: false,
+
                 validator: null,
                 controller: null,
                 textHint: '*****@gmail.com',

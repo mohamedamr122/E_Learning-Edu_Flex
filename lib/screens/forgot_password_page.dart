@@ -78,7 +78,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   padding: EdgeInsets.symmetric(vertical: 5.0),
                   child: SmallText(text: 'Email address'),
                 ),
-                MyTextField(
+                MyTextField(                            obscureText: false,
+
                     validator: (input) {
                       if (emailController.text.isNotEmpty) {
                         return null;

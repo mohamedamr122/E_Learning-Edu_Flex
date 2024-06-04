@@ -21,8 +21,7 @@ class LoginPage extends StatefulWidget {
 
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
-final formEmailKey = GlobalKey<FormState>();
-final formPasswordKey = GlobalKey<FormState>();
+final _formlKey = GlobalKey<FormState>();
 
 class _LoginPageState extends State<LoginPage> {
   String? email;
@@ -54,26 +53,27 @@ class _LoginPageState extends State<LoginPage> {
             }
           },
           builder: (context, state) {
-            return ListView(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 16),
-                  height: 97,
-                  width: 101,
-                  child: Image.asset(
-                    'assets/images/splash_screen/logo1.png',
-                    height: 91,
+            return Form(
+              key: _formlKey,
+              child: ListView(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 16),
+                    height: 97,
+                    width: 101,
+                    child: Image.asset(
+                      'assets/images/splash_screen/logo1.png',
+                      height: 91,
+                    ),
                   ),
-                ),
-                MainText(
-                  text: 'Log In',
-                ),
-                const SmallText(text: 'Email address'),
-                Form(
-                  key: formEmailKey,
-                  child: Padding(
+                  MainText(
+                    text: 'Log In',
+                  ),
+                  const SmallText(text: 'Email address'),
+                  Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: MyTextField(
+                      obscureText: false,
                       validator: (input) {
                         if (emailController.text.isNotEmpty) {
                           return null;
@@ -86,11 +86,8 @@ class _LoginPageState extends State<LoginPage> {
                       controller: emailController,
                     ),
                   ),
-                ),
-                const SmallText(text: 'Password'),
-                Form(
-                  key: formPasswordKey,
-                  child: Padding(
+                  const SmallText(text: 'Password'),
+                  Padding(
                     padding: const EdgeInsets.only(bottom: 4),
                     child: MyPasswordField(
                       validator: (input) {
@@ -105,75 +102,74 @@ class _LoginPageState extends State<LoginPage> {
                       color: ColorManager.lightGray,
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const ForgotPassword(),
-                    ));
-                  },
-                  child: const Text(
-                    'forgot password?',
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      color: ColorManager.forgotGray,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ForgotPassword(),
+                      ));
+                    },
+                    child: const Text(
+                      'forgot password?',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: ColorManager.forgotGray,
+                      ),
                     ),
                   ),
-                ),
-                MyNavigatorButton(
-                  textColor: Colors.white,
-                  onTap: () {
-                    if (formEmailKey.currentState!.validate() == true ||
-                        formPasswordKey.currentState!.validate()) {
-                      BlocProvider.of<AuthCubit>(context).login(
-                          email: emailController.text,
-                          password: passwordController.text);
-                    }
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const LayoutStudentPage(),
-                    ));
-                  },
-                  height: 52,
-                  color: ColorManager.mainGreen,
-                  width: 242,
-                  text: state is LoginLoadingState ? 'Loading...' : 'Login',
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Don\'t have an account ?',
-                        style: TextStyle(
-                            color: Color(0xff707070),
-                            fontFamily: 'Roboto',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      GestureDetector(
-                        onTap: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const ChooseSignUp()),
-                        ),
-                        child: const Text(
-                          'Sign up',
-                          style: TextStyle(
-                              color: Color(0xff0038C1),
-                              fontFamily: 'Roboto',
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ],
+                  MyNavigatorButton(
+                    textColor: Colors.white,
+                    onTap: () {
+                      if (_formlKey.currentState!.validate()) {
+                        BlocProvider.of<AuthCubit>(context).login(
+                            email: emailController.text,
+                            password: passwordController.text);
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const LayoutStudentPage(),
+                        ));
+                      }
+                    },
+                    height: 52,
+                    color: ColorManager.mainGreen,
+                    width: 242,
+                    text: state is LoginLoadingState ? 'Loading...' : 'Login',
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Don\'t have an account ?',
+                          style: TextStyle(
+                              color: Color(0xff707070),
+                              fontFamily: 'Roboto',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => const ChooseSignUp()),
+                          ),
+                          child: const Text(
+                            'Sign up',
+                            style: TextStyle(
+                                color: Color(0xff0038C1),
+                                fontFamily: 'Roboto',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),

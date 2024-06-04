@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/cubit/auth_cubit.dart';
 import 'package:new_eduflex/screens/account_page.dart';
+import 'package:new_eduflex/screens/edit_page.dart';
 import 'package:new_eduflex/screens/forgot_password_page.dart';
 import 'package:new_eduflex/screens/instructor_signup_page.dart';
 import 'package:new_eduflex/screens/layout_instructor_page.dart';
@@ -39,7 +40,7 @@ class _EduFlexState extends State<EduFlex> {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginPage(),
+        home: LayoutStudentPage(),
       ),
     );
   }

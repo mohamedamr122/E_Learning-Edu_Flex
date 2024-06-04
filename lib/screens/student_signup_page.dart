@@ -30,7 +30,7 @@ TextEditingController roleController = TextEditingController();
 TextEditingController stageController = TextEditingController();
 TextEditingController levelController = TextEditingController();
 
-final formKey = GlobalKey<FormState>();
+final _formKey = GlobalKey<FormState>();
 
 class _StudentSignupPageState extends State<StudentSignupPage> {
   String? educationSelected;
@@ -83,237 +83,242 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Colors.white,
-            body: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Form(
-                key: formKey,
-                child: ListView(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      height: 97,
-                      width: 101,
-                      child: Image.asset(
-                        'assets/images/splash_screen/logo1.png',
-                        height: 91,
-                      ),
+            body: Form(
+              key: _formKey,
+              child: ListView(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                children: [
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 16),
+                    height: 97,
+                    width: 101,
+                    child: Image.asset(
+                      'assets/images/splash_screen/logo1.png',
+                      height: 91,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: MainText(text: 'Sign Up'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: MyTextField(
-                              validator: (input) {
-                                if (firstNameController.text.isNotEmpty) {
-                                  return null;
-                                } else {
-                                  return 'First name must not be empty';
-                                }
-                              },
-                              controller: firstNameController,
-                              textHint: 'First Name',
-                              icon: null,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
-                            child: MyTextField(
-                              validator: (input) {
-                                if (lastNameController.text.isNotEmpty) {
-                                  return null;
-                                } else {
-                                  return 'Last name must not be empty';
-                                }
-                              },
-                              controller: lastNameController,
-                              textHint: 'Last Name',
-                              icon: null,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: MyTextField(
-                          validator: (input) {
-                            if (emailController.text.isNotEmpty) {
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: MainText(text: 'Sign Up'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: MyTextField(
+                            obscureText: false,
+                            validator: (firstName) {
+                              if (firstName!.isEmpty) {
+                                return 'First name is required';
+                              }
                               return null;
-                            } else {
-                              return 'Email must not be empty';
-                            }
-                          },
-                          controller: emailController,
-                          textHint: 'Email Address',
-                          icon: null),
+                            },
+                            controller: firstNameController,
+                            textHint: 'First Name',
+                            icon: null,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: MyTextField(
+                            obscureText: false,
+                            validator: (lastName) {
+                              if (lastName!.isEmpty) {
+                                return 'Last name is required';
+                              }
+                              return null;
+                            },
+                            controller: lastNameController,
+                            textHint: 'Last Name',
+                            icon: null,
+                          ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: MyPasswordField(
-                        validator: (input) {
-                          if (passwordController.text.isNotEmpty) {
-                            return null;
-                          } else {
-                            return 'Password must not be empty';
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: MyTextField(
+                        obscureText: false,
+                        validator: (email) {
+                          if (email == null ||
+                              email.isEmpty ||
+                              !email.contains('@') ||
+                              !email.contains('.')) {
+                            return 'Invalid Email';
                           }
-                        },
-                        controller: passwordController,
-                        text: 'Password',
-                        color: ColorManager.lightGray,
-                      ),
-                    ),
-                    MyPasswordField(
-                      validator: (input) {
-                        if (confirmPasswordController.text ==
-                            passwordController.text) {
                           return null;
-                        } else {
-                          return 'Password not match';
+                        },
+                        controller: emailController,
+                        textHint: 'Email Address',
+                        icon: null),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: MyPasswordField(
+                      validator: (password) {
+                        RegExp regex = RegExp(
+                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        var passNonNullValue = password ?? "";
+                        if (passNonNullValue.isEmpty) {
+                          return ("Password is required");
+                        } else if (passNonNullValue.length < 8) {
+                          return ("Password Must be more than 5 characters");
+                        } else if (!regex.hasMatch(passNonNullValue)) {
+                          return ("Password should contain upper,lower,digit and Special character ");
                         }
+                        return null;
                       },
-                      controller: confirmPasswordController,
-                      text: 'Confirm password',
+                      controller: passwordController,
+                      text: 'Password',
                       color: ColorManager.lightGray,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 16.0),
-                      child: SmallText(text: 'Education'),
+                  ),
+                  MyPasswordField(
+                    validator: (confirmPassword) {
+                      if (passwordController.text !=
+                          confirmPasswordController.text) {
+                        return ('Password not matching');
+                      }
+                      return null;
+                    },
+                    controller: confirmPasswordController,
+                    text: 'Confirm password',
+                    color: ColorManager.lightGray,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 16.0),
+                    child: SmallText(text: 'Education'),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.only(bottom: 16),
+                    decoration: BoxDecoration(
+                      color: ColorManager.lightGray,
+                      border: Border.all(
+                        color: ColorManager.logGrey,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      margin: const EdgeInsets.only(bottom: 16),
-                      decoration: BoxDecoration(
-                        color: ColorManager.lightGray,
-                        border: Border.all(
-                          color: ColorManager.logGrey,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: DropdownButtonFormField(
-                        dropdownColor: ColorManager.lightGray,
-                        decoration:
-                            const InputDecoration.collapsed(hintText: ''),
-                        hint: const Text('Select One'),
-                        items: ['General', 'Special', 'Graduated']
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e),
-                                ))
-                            .toList(),
-                        value: educationSelected,
-                        onChanged: (value) {
-                          setState(() {
-                            educationSelected = value!;
-                            isDropdownVisible = true;
-                          });
-                        },
-                      ),
-                    ),
-                    if (educationSelected == 'General') ...[
-                      MyDropBox(
-                        hintText: 'Level',
-                        items: const [
-                          DropdownMenuItem(
-                            value: 'Primary level',
-                            child: Text('Primary level'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'Middle school',
-                            child: Text('Middle school'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'High school',
-                            child: Text('High school'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'University',
-                            child: Text('University'),
-                          ),
-                        ],
-                      ),
-                      MyDropBox(
-                        hintText: 'Grade',
-                        items: const [
-                          DropdownMenuItem(
-                            value: 'Grade one',
-                            child: Text('Grade one'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'Grade two',
-                            child: Text('Grade two'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'Grade three',
-                            child: Text('Grade three'),
-                          ),
-                        ],
-                      ),
-                    ],
-                    MyNavigatorButton(
-                      textColor: Colors.white,
-                      onTap: () {
-                        // if (formKey.currentState!.validate()) {
-                        //   BlocProvider.of<AuthCubit>(context).register(
-                        //       firstName: firstNameController.text,
-                        //       lastName: lastNameController.text,
-                        //       email: emailController.text,
-                        //       password: passwordController.text,
-                        //       confirmPassword: confirmPasswordController.text,
-                        //       role: roleController.text,
-                        //       education: educationSelected.toString(),
-                        //       stage: stageController.text,
-                        //       level: levelController.text);
-                        // }
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const LayoutStudentPage()));
+                    child: DropdownButtonFormField(
+                      dropdownColor: ColorManager.lightGray,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      hint: const Text('Select One'),
+                      items: ['General', 'Special', 'Graduated']
+                          .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(e),
+                              ))
+                          .toList(),
+                      value: educationSelected,
+                      onChanged: (value) {
+                        setState(() {
+                          educationSelected = value!;
+                          isDropdownVisible = true;
+                        });
                       },
-                      height: 60,
-                      width: 252,
-                      color: ColorManager.mainGreen,
-                      text: 'Create Account',
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Already have account?',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 14,
-                                color: Color(0xff505050)),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          GestureDetector(
-                            onTap: () => Navigator.of(context).pop(
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginPage()),
-                            ),
-                            child: const Text(
-                              'Log In',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Color(0xff0038C1),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                  ),
+                  if (educationSelected == 'General') ...[
+                    MyDropBox(
+                      hintText: 'Level',
+                      items: const [
+                        DropdownMenuItem(
+                          value: 'Primary level',
+                          child: Text('Primary level'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Middle school',
+                          child: Text('Middle school'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'High school',
+                          child: Text('High school'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'University',
+                          child: Text('University'),
+                        ),
+                      ],
+                    ),
+                    MyDropBox(
+                      hintText: 'Grade',
+                      items: const [
+                        DropdownMenuItem(
+                          value: 'Grade one',
+                          child: Text('Grade one'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Grade two',
+                          child: Text('Grade two'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Grade three',
+                          child: Text('Grade three'),
+                        ),
+                      ],
                     ),
                   ],
-                ),
+                  MyNavigatorButton(
+                    textColor: Colors.white,
+                    onTap: () {
+                      if (passwordController == confirmPasswordController ||
+                          _formKey.currentState!.validate()) {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const LayoutStudentPage(),
+                          ),
+                        );
+                      }
+                    },
+                    height: 60,
+                    width: 252,
+                    color: ColorManager.mainGreen,
+                    text: state is RegisterLoadingState
+                        ? 'Loading...'
+                        : 'Create Account',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Already have account?',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 14,
+                              color: Color(0xff505050)),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pop(
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          ),
+                          child: const Text(
+                            'Log In',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xff0038C1),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           );
@@ -322,6 +327,3 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
     );
   }
 }
-// state is RegisterLoadingState
-//                           ? 'Loading...'
-//                           :

@@ -63,7 +63,8 @@ class NewCardPage extends StatelessWidget {
               ),
             ),
           ),
-          MyTextField(
+          MyTextField(                            obscureText: false,
+
               validator: null,
               controller: null,
               textHint: '',
@@ -80,7 +81,8 @@ class NewCardPage extends StatelessWidget {
               ),
             ),
           ),
-          MyTextField(
+          MyTextField(                            obscureText: false,
+
               validator: null,
               controller: null,
               textHint: '',

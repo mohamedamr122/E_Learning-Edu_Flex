@@ -42,6 +42,7 @@ class DeleteAccountPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: MyTextField(
+                obscureText: false,
                 validator: null,
                 controller: null,
                 textHint: 'Email Address',

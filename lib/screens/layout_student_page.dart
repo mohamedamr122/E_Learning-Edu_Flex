@@ -1,5 +1,3 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/screens/search_page.dart';
 import 'package:new_eduflex/screens/wishlist_page.dart';
@@ -17,7 +15,7 @@ class LayoutStudentPage extends StatefulWidget {
 }
 
 class _LayoutStudentPageState extends State<LayoutStudentPage> {
-  final NavPages = [
+  final navPages = [
     const AccountPage(),
     const SearchPage(),
     const StudentHomePage(),
@@ -28,78 +26,68 @@ class _LayoutStudentPageState extends State<LayoutStudentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        color: ColorManager.lightGray,
-        buttonBackgroundColor: ColorManager.mainGreen,
-        backgroundColor: ColorManager.mainGreen,
+      bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: const TextStyle(color: Colors.amber),
+        selectedItemColor: ColorManager.mainGreen,
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        elevation: 0,
+        selectedFontSize: 13,
+        backgroundColor: Colors.grey[60],
         onTap: (value) {
           setState(() {
             _selectedIndex = value;
           });
         },
         items: [
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/account.png',
-                color: _selectedIndex == 0 ? Colors.white : Colors.black,
-              ),
-              label: 'Account'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/search.png',
-                color: _selectedIndex == 1 ? Colors.white : Colors.black,
-                height: 25,
-              ),
-              label: 'Search'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/home.png',
-                color: _selectedIndex == 2 ? Colors.white : Colors.black,
-              ),
-              label: 'Home'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/star.png',
-                color: _selectedIndex == 3 ? Colors.white : Colors.black,
-              ),
-              label: 'Wish List'),
-          CurvedNavigationBarItem(
-              child: Image.asset(
-                'assets/icons/play.png',
-                color: _selectedIndex == 4 ? Colors.white : Colors.black,
-              ),
-              label: 'My Courses'),
+          BottomNavigationBarItem(
+            label: 'Account',
+            icon: Image.asset(
+              fit: BoxFit.cover,
+              'assets/icons/account.png',
+              color:
+                  _selectedIndex == 0 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Search',
+            icon: Icon(
+              size: 30,
+              Icons.search_outlined,
+              color:
+                  _selectedIndex == 1 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Image.asset(
+              'assets/icons/home.png',
+              color:
+                  _selectedIndex == 2 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Wish List',
+            icon: Icon(
+              size: 35,
+              Icons.star_border_rounded,
+              color:
+                  _selectedIndex == 3 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'My Courses',
+            icon: Image.asset(
+              width: 30,
+              height: 30,
+              'assets/icons/play.png',
+              color:
+                  _selectedIndex == 4 ? ColorManager.mainGreen : Colors.black,
+            ),
+          ),
         ],
       ),
-      body: NavPages[_selectedIndex],
+      body: navPages[_selectedIndex],
     );
   }
 }
-// BottomNavigationBar(
-//         selectedItemColor: ColorManager.mainGreen,
-//         selectedLabelStyle: const TextStyle(color: ColorManager.mainGreen),
-//         selectedIconTheme:
-//             const IconThemeData(size: 35, color: ColorManager.mainGreen),
-//         selectedFontSize: 13,
-//         onTap: (index) {
-//           setState(() {
-//             _selectedIndex = index;
-//           });
-//         },
-//         currentIndex: _selectedIndex,
-//         elevation: 0,
-//         backgroundColor: ColorManager.lightGray,
-//         type: BottomNavigationBarType.fixed,
-//         items: [
-//           BottomNavigationBarItem(
-//               icon: Image.asset('assets/icons/account.png'), label: 'Account',),
-//           BottomNavigationBarItem(
-//               icon: Image.asset('assets/icons/search.png'), label: 'Search'),
-//           BottomNavigationBarItem(
-//               icon: Image.asset('assets/icons/home.png'), label: 'Home'),
-//           BottomNavigationBarItem(
-//               icon: Image.asset('assets/icons/star.png'), label: 'Wish List'),
-//           BottomNavigationBarItem(
-//               icon: Image.asset('assets/icons/play.png'), label: 'My Courses'),
-//         ],
-//       )

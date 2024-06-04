@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MyPasswordField extends StatefulWidget {
-  MyPasswordField(
-      {super.key,
-      required this.text,
-      required this.color,
-      required this.controller,
-      required this.validator,
-      });
+  MyPasswordField({
+    super.key,
+    required this.text,
+    required this.color,
+    required this.controller,
+    required this.validator,
+  });
   final String text;
   final Color color;
   TextEditingController? controller;
@@ -22,33 +22,32 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: TextFormField(
-        validator: widget.validator,
-        controller: widget.controller,
-        obscureText: secureText,
-        decoration: InputDecoration(
-          hintText: widget.text,
-          enabled: true,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.black12),
-          ),
-          filled: true,
-          suffixIcon: IconButton(
-              onPressed: () {
-                setState(() {
-                  secureText = !secureText;
-                });
-              },
-              icon: Icon(secureText ? Icons.visibility_off : Icons.visibility)),
-          fillColor: widget.color,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: widget.validator,
+      controller: widget.controller,
+      obscureText: secureText,
+      decoration: InputDecoration(
+        hintText: widget.text,
+        enabled: true,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.black12),
+        ),
+        filled: true,
+        suffixIcon: IconButton(
+            onPressed: () {
+              setState(() {
+                secureText = !secureText;
+              });
+            },
+            icon: Icon(secureText ? Icons.visibility_off : Icons.visibility)),
+        fillColor: widget.color,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );

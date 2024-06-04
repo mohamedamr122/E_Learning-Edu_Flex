@@ -66,7 +66,8 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: MyTextField(
+                    child: MyTextField(                            obscureText: false,
+
                         validator: null,
                         controller: null,
                         textHint: 'First Name',
@@ -76,7 +77,8 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
                     width: 10,
                   ),
                   Expanded(
-                    child: MyTextField(
+                    child: MyTextField(                            obscureText: false,
+
                         validator: null,
                         controller: null,
                         textHint: 'Last Name',
@@ -87,7 +89,8 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: MyTextField(
+              child: MyTextField(                            obscureText: false,
+
                   validator: null,
                   controller: null,
                   textHint: 'Email Address',
