@@ -3,6 +3,7 @@ import '../components/horizentallistview.dart';
 
 class UniversityPage extends StatelessWidget {
   const UniversityPage({super.key});
+  static const String routeName = 'UniversityPage';
 
   @override
   Widget build(BuildContext context) {

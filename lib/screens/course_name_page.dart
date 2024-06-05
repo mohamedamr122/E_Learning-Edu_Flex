@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/gradient_text.dart';
+import 'package:new_eduflex/screens/rating_page.dart';
 
 import '../classes/class_color.dart';
 import '../components/navigator_button.dart';
 
 class CourseNamePage extends StatefulWidget {
   const CourseNamePage({super.key});
+  static const String routeName = 'CourseNamePage';
 
   @override
   State<CourseNamePage> createState() => _CourseNamePageState();
@@ -26,7 +28,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/images/course_name_screen/course name.png'),
+                const GradientText(text: 'Course Name'),
                 IconButton(
                     onPressed: () {
                       scaffoldkey.currentState!.closeEndDrawer();
@@ -56,7 +58,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
             Container(
               width: 297,
               height: 55,
-              color: ColorManager.lightGray,
+              color: ColorManager.containerGrey,
               child: const Row(
                 children: [
                   Icon(
@@ -81,7 +83,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
             Container(
               width: 297,
               height: 55,
-              color: ColorManager.lightGray,
+              color: ColorManager.containerGrey,
               child: const Row(
                 children: [
                   Icon(
@@ -121,7 +123,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
             Container(
               width: 297,
               height: 55,
-              color: ColorManager.lightGray,
+              color: ColorManager.containerGrey,
               child: const Row(
                 children: [
                   Icon(
@@ -146,7 +148,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
             Container(
               width: 297,
               height: 55,
-              color: ColorManager.lightGray,
+              color: ColorManager.containerGrey,
               child: const Row(
                 children: [
                   Icon(
@@ -167,12 +169,21 @@ class _CourseNamePageState extends State<CourseNamePage> {
                 ],
               ),
             ),
+            MyNavigatorButton(
+                textColor: ColorManager.mainGreen,
+                onTap: () {
+                  Navigator.pushNamed(context, RatingPage.routeName);
+                },
+                height: 43,
+                width: 201,
+                color: ColorManager.containerGrey,
+                text: 'Rating course')
           ],
         ),
       ),
       appBar: AppBar(
         elevation: 0,
-        title: GradientText(text: 'Course Name'),
+        title: const GradientText(text: 'Course Name'),
         centerTitle: true,
         actions: [
           IconButton(

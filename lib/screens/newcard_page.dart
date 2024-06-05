@@ -7,6 +7,7 @@ import '../components/textfield.dart';
 
 class NewCardPage extends StatelessWidget {
   const NewCardPage({super.key});
+  static const String routeName = 'NewCardPage';
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +64,8 @@ class NewCardPage extends StatelessWidget {
               ),
             ),
           ),
-          MyTextField(                            obscureText: false,
-
+          MyTextField(
+              obscureText: false,
               validator: null,
               controller: null,
               textHint: '',
@@ -81,8 +82,8 @@ class NewCardPage extends StatelessWidget {
               ),
             ),
           ),
-          MyTextField(                            obscureText: false,
-
+          MyTextField(
+              obscureText: false,
               validator: null,
               controller: null,
               textHint: '',

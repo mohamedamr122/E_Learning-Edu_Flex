@@ -8,6 +8,7 @@ import '../components/textfield.dart';
 
 class DeleteAccountPage extends StatelessWidget {
   const DeleteAccountPage({super.key});
+  static const String routeName = 'DeleteAccountPage';
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class DeleteAccountPage extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: SmallText(text: 'password'),
           ),
-          MyPasswordField(
+          const MyPasswordField(
               validator: null,
               controller: null,
               text: 'enter your password here',

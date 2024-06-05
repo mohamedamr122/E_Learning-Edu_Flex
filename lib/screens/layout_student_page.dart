@@ -9,6 +9,7 @@ import 'mycourses_page.dart';
 
 class LayoutStudentPage extends StatefulWidget {
   const LayoutStudentPage({super.key});
+  static const String routeName = 'LayoutStudentPage';
 
   @override
   State<LayoutStudentPage> createState() => _LayoutStudentPageState();

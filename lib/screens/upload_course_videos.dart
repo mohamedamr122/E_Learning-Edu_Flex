@@ -3,13 +3,14 @@ import 'package:new_eduflex/components/gradient_text.dart';
 
 class UploadCourseVideos extends StatelessWidget {
   const UploadCourseVideos({super.key});
+  static const String routeName = 'UploadCourseVideos';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: GradientText(text: 'Course Name'),
+        title: const GradientText(text: 'Course Name'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),

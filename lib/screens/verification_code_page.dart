@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-
 import '../classes/class_color.dart';
 import '../components/navigator_button.dart';
 import '../components/verify_box.dart';
@@ -10,6 +9,7 @@ import 'new_password_page.dart';
 
 class VerificationCode extends StatefulWidget {
   const VerificationCode({super.key});
+  static const String routeName = 'VerificationCode';
 
   @override
   State<VerificationCode> createState() => _VerificationCodeState();
@@ -22,9 +22,7 @@ class _VerificationCodeState extends State<VerificationCode> {
       type: QuickAlertType.info,
       text: 'Welcome back! Discover now!',
       title: 'Your code confirmed',
-      onConfirmBtnTap: () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const NewPassword()),
-      ),
+      onConfirmBtnTap: () => Navigator.pushNamed(context,NewPassword.routeName),
     );
   }
 
@@ -72,12 +70,12 @@ class _VerificationCodeState extends State<VerificationCode> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(child: VerifyBox()),
-                  Expanded(child: VerifyBox()),
-                  Expanded(child: VerifyBox()),
-                  Expanded(child: VerifyBox()),
-                  Expanded(child: VerifyBox()),
-                  Expanded(child: VerifyBox()),
+                  Flexible(child: VerifyBox()),
+                  Flexible(child: VerifyBox()),
+                  Flexible(child: VerifyBox()),
+                  Flexible(child: VerifyBox()),
+                  Flexible(child: VerifyBox()),
+                  Flexible(child: VerifyBox()),
                 ],
               ),
             ),

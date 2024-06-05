@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class TopRatingPage extends StatelessWidget {
   const TopRatingPage({super.key});
+  static const String routeName = 'TopRatingPage';
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:new_eduflex/screens/subjects.dart';
 
 class HighSchoolLevelThreePage extends StatelessWidget {
   const HighSchoolLevelThreePage({super.key});
+  static const String routeName = 'HighSchoolLevelThreePage';
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ import 'newcard_page.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
+  static const String routeName = 'PaymentPage';
 
   @override
   Widget build(BuildContext context) {

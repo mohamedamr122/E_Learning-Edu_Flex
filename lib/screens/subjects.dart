@@ -5,40 +5,41 @@ import '../components/subjects_text.dart';
 
 class Subjects extends StatelessWidget {
   const Subjects({super.key});
+  static const String routeName = 'Subjects';
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(8),
-      children: [
+      children: const [
         Row(
           children: [SubjectsText(text: 'Arabic')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
         Row(
           children: [SubjectsText(text: 'English')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
         Row(
           children: [SubjectsText(text: 'Mathematics')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
         Row(
           children: [SubjectsText(text: 'Sciences')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
         Row(
           children: [SubjectsText(text: 'Social Studies')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
         Row(
           children: [SubjectsText(text: 'Computer')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
         Row(
           children: [SubjectsText(text: 'Drawing')],
         ),
-        const ListViewHorizntal(),
+        ListViewHorizntal(),
       ],
     );
   }

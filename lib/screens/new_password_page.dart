@@ -10,6 +10,7 @@ import 'login_page.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({super.key});
+  static const String routeName = 'NewPassword';
 
   @override
   State<NewPassword> createState() => _NewPasswordState();
@@ -56,7 +57,7 @@ class _NewPasswordState extends State<NewPassword> {
             padding: EdgeInsets.only(top: 8.0),
             child: SmallText(text: 'New password'),
           ),
-          MyPasswordField(
+          const MyPasswordField(
             validator: null,
             controller: null,
             text: 'Enter your new password',
@@ -66,7 +67,7 @@ class _NewPasswordState extends State<NewPassword> {
             padding: EdgeInsets.only(top: 8.0),
             child: SmallText(text: 'Confirm password'),
           ),
-          MyPasswordField(
+          const MyPasswordField(
             validator: null,
             controller: null,
             text: 'Confirm your password',

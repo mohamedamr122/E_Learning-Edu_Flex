@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:new_eduflex/cubit/auth_cubit.dart';
+import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
 import 'package:new_eduflex/screens/verification_code_page.dart';
 
 import '../classes/class_color.dart';
@@ -13,6 +12,7 @@ TextEditingController emailController = TextEditingController();
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
+  static const String routeName = 'ForgotPassword';
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -26,8 +26,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is VerifyLoadedState) {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const VerificationCode()));
+          Navigator.pushNamed(context, VerificationCode.routeName);
         }
         if (state is VerifyFailedState) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -78,14 +77,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   padding: EdgeInsets.symmetric(vertical: 5.0),
                   child: SmallText(text: 'Email address'),
                 ),
-                MyTextField(                            obscureText: false,
-
-                    validator: (input) {
-                      if (emailController.text.isNotEmpty) {
-                        return null;
-                      } else {
-                        return 'email must not be empty';
+                MyTextField(
+                    obscureText: false,
+                    validator: (email) {
+                      if (email == null ||
+                          email.isEmpty ||
+                          !email.contains('@') ||
+                          !email.contains('.')) {
+                        return 'Email is required';
                       }
+                      return null;
                     },
                     controller: emailController,
                     textHint: 'Enter your Email here',
@@ -95,7 +96,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: MyNavigatorButton(
                       textColor: Colors.white,
                       onTap: () {
-                        if (_formKey.currentState!.validate() == true) {
+                        if (_formKey.currentState!.validate()) {
                           BlocProvider.of<AuthCubit>(context).verifyEmail(
                               email: emailController.text, otp: '');
                         }

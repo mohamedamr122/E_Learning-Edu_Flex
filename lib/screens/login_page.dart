@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:new_eduflex/cubit/auth_cubit.dart';
+import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
 import 'package:new_eduflex/screens/layout_student_page.dart';
-import 'package:new_eduflex/screens/student_home_page.dart';
 import '../classes/class_color.dart';
 import '../components/maintext.dart';
 import '../components/navigator_button.dart';
@@ -14,6 +13,7 @@ import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+  static const String routeName = 'LoginPage';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -34,20 +34,12 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(16),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is LoginSuccessState) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const StudentHomePage(),
-                ),
-              );
-            }
-            if (state is LoginFailedState) {
+            if (state is LoginLoadingState) {
+              Navigator.pushNamed(context, LayoutStudentPage.routeName);
+            } else if (state is LoginFailedState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Container(
-                      alignment: Alignment.center,
-                      height: 50,
-                      child: Text(state.message)),
+                  content: Text(state.message),
                 ),
               );
             }
@@ -66,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 91,
                     ),
                   ),
-                  MainText(
+                  const MainText(
                     text: 'Log In',
                   ),
                   const SmallText(text: 'Email address'),
@@ -74,12 +66,14 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(bottom: 16),
                     child: MyTextField(
                       obscureText: false,
-                      validator: (input) {
-                        if (emailController.text.isNotEmpty) {
-                          return null;
-                        } else {
-                          return 'email must not be empty';
+                      validator: (email) {
+                        if (email == null ||
+                            email.isEmpty ||
+                            !email.contains('@') ||
+                            !email.contains('.')) {
+                          return 'Email is required';
                         }
+                        return null;
                       },
                       textHint: 'Type your Email',
                       icon: null,
@@ -90,33 +84,35 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 4),
                     child: MyPasswordField(
-                      validator: (input) {
-                        if (passwordController.text.isNotEmpty) {
-                          return null;
-                        } else {
-                          return 'Password must not be empty';
+                      validator: (password) {
+                        RegExp regex = RegExp(
+                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        var passNonNullValue = password ?? "";
+                        if (passNonNullValue.isEmpty) {
+                          return ("Password is required");
+                        } else if (passNonNullValue.length < 8) {
+                          return ("Password Must be more than 5 characters");
+                        } else if (!regex.hasMatch(passNonNullValue)) {
+                          return ("Password should contain upper,lower,digit and Special character ");
                         }
+                        return null;
                       },
                       controller: passwordController,
                       text: 'Type your password',
                       color: ColorManager.lightGray,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ForgotPassword(),
-                      ));
-                    },
-                    child: const Text(
-                      'forgot password?',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: ColorManager.forgotGray,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, ForgotPassword.routeName);
+                        },
+                        child: const Text('Forgot Password'),
                       ),
-                    ),
+                    ],
                   ),
                   MyNavigatorButton(
                     textColor: Colors.white,
@@ -125,9 +121,6 @@ class _LoginPageState extends State<LoginPage> {
                         BlocProvider.of<AuthCubit>(context).login(
                             email: emailController.text,
                             password: passwordController.text);
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const LayoutStudentPage(),
-                        ));
                       }
                     },
                     height: 52,
@@ -152,10 +145,8 @@ class _LoginPageState extends State<LoginPage> {
                           width: 8,
                         ),
                         GestureDetector(
-                          onTap: () => Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (context) => const ChooseSignUp()),
-                          ),
+                          onTap: () => Navigator.pushNamed(
+                              context, ChooseSignUp.routeName),
                           child: const Text(
                             'Sign up',
                             style: TextStyle(

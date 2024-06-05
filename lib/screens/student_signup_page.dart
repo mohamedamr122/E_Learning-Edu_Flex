@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:new_eduflex/cubit/auth_cubit.dart';
+import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
 import 'package:new_eduflex/screens/layout_student_page.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
@@ -16,6 +16,7 @@ import 'login_page.dart';
 
 class StudentSignupPage extends StatefulWidget {
   const StudentSignupPage({super.key});
+  static const String routeName = 'StudentSignupPage';
 
   @override
   State<StudentSignupPage> createState() => _StudentSignupPageState();
@@ -44,9 +45,7 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
       type: QuickAlertType.success,
       text: 'Welcome back! Discover now!',
       title: 'You are signed up',
-      onConfirmBtnTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-      ),
+      onConfirmBtnTap: () => Navigator.pushNamed(context, LoginPage.routeName),
     );
   }
 
@@ -101,15 +100,15 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                       height: 91,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 10),
                     child: MainText(text: 'Sign Up'),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Row(
                       children: [
-                        Expanded(
+                        Flexible(
                           child: MyTextField(
                             obscureText: false,
                             validator: (firstName) {
@@ -126,7 +125,7 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Expanded(
+                        Flexible(
                           child: MyTextField(
                             obscureText: false,
                             validator: (lastName) {
@@ -228,9 +227,9 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                     ),
                   ),
                   if (educationSelected == 'General') ...[
-                    MyDropBox(
+                    const MyDropBox(
                       hintText: 'Level',
-                      items: const [
+                      items: [
                         DropdownMenuItem(
                           value: 'Primary level',
                           child: Text('Primary level'),
@@ -249,9 +248,9 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                         ),
                       ],
                     ),
-                    MyDropBox(
+                    const MyDropBox(
                       hintText: 'Grade',
-                      items: const [
+                      items: [
                         DropdownMenuItem(
                           value: 'Grade one',
                           child: Text('Grade one'),
@@ -272,11 +271,8 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                     onTap: () {
                       if (passwordController == confirmPasswordController ||
                           _formKey.currentState!.validate()) {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => const LayoutStudentPage(),
-                          ),
-                        );
+                        Navigator.pushNamed(
+                            context, LayoutStudentPage.routeName);
                       }
                     },
                     height: 60,

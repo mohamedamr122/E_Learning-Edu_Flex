@@ -4,6 +4,7 @@ import 'package:new_eduflex/screens/subjects.dart';
 
 class HighSchoolLevelOnePage extends StatelessWidget {
   const HighSchoolLevelOnePage({super.key});
+  static const String routeName = 'HighSchoolLevelOnePage';
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +17,17 @@ class HighSchoolLevelOnePage extends StatelessWidget {
           title: const Text(
             'High School : Level One',
             style: TextStyle(
-                fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 15),
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w700,
+                fontSize: 15),
           ),
         ),
         body: const Column(
-            children: [
-              TapViewerTerms(),
-              Expanded(child: TabBarView(children: [Subjects(), Subjects()]))
-            ],
-          ),
+          children: [
+            TapViewerTerms(),
+            Flexible(child: TabBarView(children: [Subjects(), Subjects()]))
+          ],
+        ),
       ),
     );
   }

@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:new_eduflex/classes/class_color.dart';
 import 'package:new_eduflex/components/navigator_button.dart';
 
-class RatingPage extends StatelessWidget {
+class RatingPage extends StatefulWidget {
   const RatingPage({super.key});
+  static const String routeName = 'RatingPage';
+
+  @override
+  State<RatingPage> createState() => _RatingPageState();
+}
+
+class _RatingPageState extends State<RatingPage> {
+  final List<String> _comments = [];
+  final TextEditingController _controller = TextEditingController();
+
+  void _addComment(String comment) {
+    setState(() {
+      _comments.add(comment);
+    });
+    _controller.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +118,9 @@ class RatingPage extends StatelessWidget {
                   ),
                   Form(
                     child: TextFormField(
+                      controller: _controller,
                       decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: 'Write a comment',
                         filled: true,
                         suffixIcon: IconButton(
@@ -121,7 +140,11 @@ class RatingPage extends StatelessWidget {
           ),
           MyNavigatorButton(
               textColor: Colors.white,
-              onTap: () {},
+              onTap: () {
+                if (_controller.text.isNotEmpty) {
+                  _addComment(_controller.text);
+                }
+              },
               height: 42,
               width: 242,
               color: ColorManager.mainGreen,

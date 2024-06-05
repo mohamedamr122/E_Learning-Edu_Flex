@@ -8,6 +8,7 @@ import 'edit_page.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
+  static const String routeName = 'AccountPage';
 
   @override
   Widget build(BuildContext context) {

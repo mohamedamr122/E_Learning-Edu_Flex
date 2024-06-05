@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/screens/search_page.dart';
 import 'package:new_eduflex/screens/toprating_page.dart';
@@ -9,6 +8,7 @@ import 'instructor_home_page.dart';
 
 class LayoutInstructorPage extends StatefulWidget {
   const LayoutInstructorPage({super.key});
+  static const String routeName = 'LayoutInstructorPage';
 
   @override
   State<LayoutInstructorPage> createState() => _LayoutInstructorPageState();

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:new_eduflex/screens/upload_course_videos.dart';
@@ -13,6 +12,7 @@ import '../components/navigator_button.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({super.key});
+  static const String routeName = 'UploadPage';
 
   @override
   State<UploadPage> createState() => _UploadPageState();
@@ -162,9 +162,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'General',
                 child: Text('General'),
@@ -186,9 +186,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'Primary stage',
                 child: Text('Primary stage'),
@@ -214,9 +214,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'Level One',
                 child: Text('Level One'),
@@ -238,9 +238,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'first term',
                 child: Text('first term'),
@@ -258,9 +258,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'General',
                 child: Text('General'),
@@ -282,9 +282,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'limited',
                 child: Text('limited'),
@@ -302,9 +302,9 @@ class _UploadPageState extends State<UploadPage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500),
           ),
-          MyDropBox(
+          const MyDropBox(
             hintText: 'Select One',
-            items: const [
+            items: [
               DropdownMenuItem(
                 value: 'A week',
                 child: Text('A week'),

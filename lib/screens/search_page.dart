@@ -6,6 +6,7 @@ import '../components/secondcategories.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
+  static const String routeName = 'SearchPage';
 
   @override
   Widget build(BuildContext context) {

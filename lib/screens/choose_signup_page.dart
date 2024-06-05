@@ -7,6 +7,8 @@ import 'instructor_signup_page.dart';
 
 class ChooseSignUp extends StatelessWidget {
   const ChooseSignUp({super.key});
+    static const routeName = 'ChooseSignUp';
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class ChooseSignUp extends StatelessWidget {
               height: 91,
             ),
           ),
-          MainText(text: 'Sign Up'),
+          const MainText(text: 'Sign Up'),
           const SizedBox(
             height: 50,
           ),

@@ -4,6 +4,7 @@ import 'package:new_eduflex/screens/subjects.dart';
 
 class MiddleSchoolLevelThreePage extends StatelessWidget {
   const MiddleSchoolLevelThreePage({super.key});
+  static const String routeName = 'MiddleSchoolLevelThreePage';
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class MiddleSchoolLevelThreePage extends StatelessWidget {
         body: const Column(
           children: [
             TapViewerTerms(),
-            Expanded(child: TabBarView(children: [Subjects(), Subjects()]))
+            Flexible(child: TabBarView(children: [Subjects(), Subjects()]))
           ],
         ),
       ),

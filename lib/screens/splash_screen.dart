@@ -5,6 +5,7 @@ import 'login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+  static const String routeName = 'SplashScreen';
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -32,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             height: 220,
             transformAlignment: Alignment.center,
             child: CircleAvatar(
-              backgroundColor: Color(0xffFFFBFE),
+              backgroundColor: const Color(0xffFFFBFE),
               radius: 140,
               child: Image.asset(
                 'assets/images/splash_screen/splash_logo.png',

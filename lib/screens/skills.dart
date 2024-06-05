@@ -4,6 +4,7 @@ import '../components/horizentallistview.dart';
 
 class SkillsPage extends StatelessWidget {
   const SkillsPage({super.key});
+  static const String routeName = 'SkillsPage';
 
   @override
   Widget build(BuildContext context) {

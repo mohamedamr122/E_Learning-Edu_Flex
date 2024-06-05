@@ -24,6 +24,7 @@ import 'account_page.dart';
 
 class StudentHomePage extends StatefulWidget {
   const StudentHomePage({super.key});
+  static const String routeName = 'StudentHomePage';
 
   @override
   State<StudentHomePage> createState() => _StudentHomePageState();
@@ -339,8 +340,8 @@ class _StudentHomePageState extends State<StudentHomePage> {
               endIndent: 50,
               indent: 50,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22),
               child: HeadLineText(text: 'Top Courses in our application'),
             ),
             const Divider(
@@ -356,8 +357,8 @@ class _StudentHomePageState extends State<StudentHomePage> {
               endIndent: 50,
               indent: 50,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22.0),
               child: HeadLineText(text: 'Categories'),
             ),
             const Divider(
@@ -374,7 +375,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
               endIndent: 50,
               indent: 50,
             ),
-            Center(child: HeadLineText(text: 'Start to be like them')),
+            const Center(child: HeadLineText(text: 'Start to be like them')),
             const Divider(
               thickness: 2,
               color: Color(0xFF00BF63),
@@ -399,7 +400,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
               endIndent: 50,
               indent: 50,
             ),
-            Center(
+            const Center(
               child: HeadLineText(text: 'Top Rating instructor'),
             ),
             const Divider(

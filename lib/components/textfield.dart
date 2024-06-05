@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_eduflex/classes/class_color.dart';
 
 class MyTextField extends StatelessWidget {
   MyTextField({
@@ -34,7 +35,7 @@ class MyTextField extends StatelessWidget {
         ),
         filled: true,
         suffixIcon: icon,
-        fillColor: const Color(0xffedededed),
+        fillColor: ColorManager.lightGray,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),

@@ -15,6 +15,7 @@ import 'login_page.dart';
 
 class InstructorSignupPage extends StatefulWidget {
   const InstructorSignupPage({super.key});
+  static const String routeName = 'InstructorSignupPage';
 
   @override
   State<InstructorSignupPage> createState() => _InstructorSignupPageState();
@@ -57,17 +58,17 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
                 height: 91,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10),
               child: MainText(text: 'Sign Up'),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Row(
                 children: [
-                  Expanded(
-                    child: MyTextField(                            obscureText: false,
-
+                  Flexible(
+                    child: MyTextField(
+                        obscureText: false,
                         validator: null,
                         controller: null,
                         textHint: 'First Name',
@@ -76,9 +77,9 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
                   const SizedBox(
                     width: 10,
                   ),
-                  Expanded(
-                    child: MyTextField(                            obscureText: false,
-
+                  Flexible(
+                    child: MyTextField(
+                        obscureText: false,
                         validator: null,
                         controller: null,
                         textHint: 'Last Name',
@@ -89,15 +90,15 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: MyTextField(                            obscureText: false,
-
+              child: MyTextField(
+                  obscureText: false,
                   validator: null,
                   controller: null,
                   textHint: 'Email Address',
                   icon: null),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16),
               child: MyPasswordField(
                 validator: null,
                 controller: null,
@@ -105,7 +106,7 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
                 color: ColorManager.lightGray,
               ),
             ),
-            MyPasswordField(
+            const MyPasswordField(
               validator: null,
               controller: null,
               text: 'Confirm password',

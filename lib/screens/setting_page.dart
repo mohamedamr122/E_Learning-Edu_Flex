@@ -5,9 +5,9 @@ import '../components/dropbox.dart';
 import '../components/navigator_button.dart';
 import 'delete_account_page.dart';
 
-
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
+  static const String routeName = 'SettingPage';
 
   @override
   State<SettingPage> createState() => _SettingPageState();
@@ -29,7 +29,7 @@ class _SettingPageState extends State<SettingPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          MyDropBox(items: const [
+          const MyDropBox(items: [
             DropdownMenuItem(
               value: 'Egypt',
               child: Text('Egypt'),
@@ -43,7 +43,7 @@ class _SettingPageState extends State<SettingPage> {
               child: Text('Sudan'),
             )
           ], hintText: 'Country'),
-          MyDropBox(items: const [
+          const MyDropBox(items: [
             DropdownMenuItem(
               value: 'AR',
               child: Text('AR'),
@@ -68,8 +68,7 @@ class _SettingPageState extends State<SettingPage> {
                     fontWeight: FontWeight.w400),
               ),
               Switch(
-                  trackOutlineColor:
-                      const MaterialStatePropertyAll(Colors.white),
+                  trackOutlineColor: const WidgetStatePropertyAll(Colors.white),
                   inactiveTrackColor: ColorManager.lightGray,
                   activeColor: ColorManager.mainGreen,
                   value: isSwitched,
@@ -85,7 +84,7 @@ class _SettingPageState extends State<SettingPage> {
             children: [
               TextButton(
                 style: const ButtonStyle(
-                    overlayColor: MaterialStatePropertyAll(Colors.white)),
+                    overlayColor: WidgetStatePropertyAll(Colors.white)),
                 child: const Text(
                   'Delete Account',
                   style: TextStyle(

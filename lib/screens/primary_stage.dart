@@ -4,6 +4,7 @@ import '../components/horizentallistview.dart';
 
 class PrimaryStagePage extends StatelessWidget {
   const PrimaryStagePage({super.key});
+  static const String routeName = 'PrimaryStagePage';
 
   @override
   Widget build(BuildContext context) {

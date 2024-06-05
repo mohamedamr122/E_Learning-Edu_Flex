@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/tap_viewer_terms.dart';
 import 'package:new_eduflex/screens/subjects.dart';
 
-
 class MiddleSchoolLevelTwoPage extends StatelessWidget {
   const MiddleSchoolLevelTwoPage({super.key});
+  static const String routeName = 'MiddleSchoolLevelTwoPage';
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length:2 ,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -17,15 +17,17 @@ class MiddleSchoolLevelTwoPage extends StatelessWidget {
           title: const Text(
             'Middle School : Level Two',
             style: TextStyle(
-                fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 15),
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w700,
+                fontSize: 15),
           ),
         ),
         body: const Column(
-            children: [
-              TapViewerTerms(),
-              Expanded(child: TabBarView(children: [Subjects(), Subjects()]))
-            ],
-          ),
+          children: [
+            TapViewerTerms(),
+            Flexible(child: TabBarView(children: [Subjects(), Subjects()]))
+          ],
+        ),
       ),
     );
   }

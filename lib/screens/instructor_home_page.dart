@@ -6,6 +6,7 @@ import 'account_page.dart';
 
 class InstructorHomePage extends StatelessWidget {
   const InstructorHomePage({super.key});
+  static const String routeName = 'InstructorHomePage';
 
   @override
   Widget build(BuildContext context) {

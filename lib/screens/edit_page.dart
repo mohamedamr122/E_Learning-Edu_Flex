@@ -8,6 +8,7 @@ import 'changepassword_page.dart';
 
 class EditPage extends StatefulWidget {
   const EditPage({super.key});
+  static const String routeName = 'EditPage';
 
   @override
   State<EditPage> createState() => _EditPageState();
@@ -37,9 +38,9 @@ class _EditPageState extends State<EditPage> {
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: Row(
               children: [
-                Expanded(
-                  child: MyTextField(                            obscureText: false,
-
+                Flexible(
+                  child: MyTextField(
+                    obscureText: false,
                     validator: null,
                     controller: null,
                     textHint: 'Mohanad',
@@ -49,9 +50,9 @@ class _EditPageState extends State<EditPage> {
                 const SizedBox(
                   width: 10,
                 ),
-                Expanded(
-                  child: MyTextField(                            obscureText: false,
-
+                Flexible(
+                  child: MyTextField(
+                    obscureText: false,
                     validator: null,
                     controller: null,
                     textHint: 'Waleed',
@@ -63,15 +64,15 @@ class _EditPageState extends State<EditPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
-            child: MyTextField(                            obscureText: false,
-
+            child: MyTextField(
+                obscureText: false,
                 validator: null,
                 controller: null,
                 textHint: '*****@gmail.com',
                 icon: null),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 16),
             child: MyPasswordField(
               validator: null,
               controller: null,

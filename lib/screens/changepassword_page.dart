@@ -7,6 +7,7 @@ import '../components/password.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
+  static const String routeName = 'ChangePasswordPage';
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +24,11 @@ class ChangePasswordPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          HeadLineText(text: 'Current password'),
+          const HeadLineText(text: 'Current password'),
           const SizedBox(
             height: 8,
           ),
-          MyPasswordField(
+          const MyPasswordField(
             validator: null,
             controller: null,
             text: '@#@#',
@@ -36,11 +37,11 @@ class ChangePasswordPage extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          HeadLineText(text: 'New password'),
+          const HeadLineText(text: 'New password'),
           const SizedBox(
             height: 8,
           ),
-          MyPasswordField(
+          const MyPasswordField(
             validator: null,
             controller: null,
             text: '',
@@ -49,11 +50,11 @@ class ChangePasswordPage extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          HeadLineText(text: 'Confirm password'),
+          const HeadLineText(text: 'Confirm password'),
           const SizedBox(
             height: 8,
           ),
-          MyPasswordField(
+          const MyPasswordField(
             validator: null,
             controller: null,
             text: '',
