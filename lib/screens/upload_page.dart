@@ -66,45 +66,45 @@ class _UploadPageState extends State<UploadPage> {
           ],
         ),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          const Text(
-            'Note!',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w700),
-          ),
-          const Text(
-            'Make the course description short and add key points .!',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w700),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Divider(
-            height: 25,
-            color: Color(0xff5C615F),
-            indent: 50,
-            endIndent: 50,
-            thickness: 2,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const Text(
-                'Course Name :  ',
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
-              ),
-              Form(
-                child: SizedBox(
+      body: Form(
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            const Text(
+              'Note!',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
+            ),
+            const Text(
+              'Make the course description short and add key points .!',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(
+              height: 25,
+              color: Color(0xff5C615F),
+              indent: 50,
+              endIndent: 50,
+              thickness: 2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  'Course Name :  ',
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
                   width: 186,
                   height: 35,
                   child: TextFormField(
@@ -114,247 +114,245 @@ class _UploadPageState extends State<UploadPage> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       filled: true,
-                      fillColor: const Color(0xffedededed),
+                      fillColor: const Color.fromARGB(236, 237, 237, 237),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'Course description :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          Form(
-            child: SizedBox(
-              width: 323,
-              height: 98,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  filled: true,
-                  fillColor: const Color(0xffedededed),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Course description :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            Form(
+              child: SizedBox(
+                width: 323,
+                height: 98,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    filled: true,
+                    fillColor: const Color.fromARGB(236, 241, 241, 241),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'Education :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'General',
-                child: Text('General'),
-              ),
-              DropdownMenuItem(
-                value: 'Special',
-                child: Text('Special'),
-              ),
-              DropdownMenuItem(
-                value: 'Graduated',
-                child: Text('Graduated'),
-              ),
-            ],
-          ),
-          const Text(
-            'Stage :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'Primary stage',
-                child: Text('Primary stage'),
-              ),
-              DropdownMenuItem(
-                value: 'Middle School',
-                child: Text('Middle School'),
-              ),
-              DropdownMenuItem(
-                value: 'High school',
-                child: Text('High school'),
-              ),
-              DropdownMenuItem(
-                value: 'University',
-                child: Text('University'),
-              ),
-            ],
-          ),
-          const Text(
-            'Level :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'Level One',
-                child: Text('Level One'),
-              ),
-              DropdownMenuItem(
-                value: 'Level Two',
-                child: Text('Level Two'),
-              ),
-              DropdownMenuItem(
-                value: 'Level Three',
-                child: Text('Level Three'),
-              ),
-            ],
-          ),
-          const Text(
-            'Term :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'first term',
-                child: Text('first term'),
-              ),
-              DropdownMenuItem(
-                value: 'Second term',
-                child: Text('Second term'),
-              ),
-            ],
-          ),
-          const Text(
-            'Subject :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'General',
-                child: Text('General'),
-              ),
-              DropdownMenuItem(
-                value: 'Special',
-                child: Text('Special'),
-              ),
-              DropdownMenuItem(
-                value: 'Graduated',
-                child: Text('Graduated'),
-              ),
-            ],
-          ),
-          const Text(
-            'Course availability after purchase :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'limited',
-                child: Text('limited'),
-              ),
-              DropdownMenuItem(
-                value: 'Unlimited',
-                child: Text('Unlimited'),
-              ),
-            ],
-          ),
-          const Text(
-            'Limited period :',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          const MyDropBox(
-            hintText: 'Select One',
-            items: [
-              DropdownMenuItem(
-                value: 'A week',
-                child: Text('A week'),
-              ),
-              DropdownMenuItem(
-                value: '2 weeks',
-                child: Text('2 weeks'),
-              ),
-              DropdownMenuItem(
-                value: 'Month',
-                child: Text('Month'),
-              ),
-              DropdownMenuItem(
-                value: '2 month',
-                child: Text('2 month'),
-              ),
-              DropdownMenuItem(
-                value: '4 month',
-                child: Text('4 month'),
-              ),
-              DropdownMenuItem(
-                value: '6 month',
-                child: Text('6 month'),
-              ),
-              DropdownMenuItem(
-                value: '8 month',
-                child: Text('8 month'),
-              ),
-              DropdownMenuItem(
-                value: '10 month',
-                child: Text('10 month'),
-              ),
-              DropdownMenuItem(
-                value: 'Year ',
-                child: Text('Year '),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const Text(
-                'Key words :  ',
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
-              ),
-              Form(
-                child: SizedBox(
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Education :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'General',
+                  child: Text('General'),
+                ),
+                DropdownMenuItem(
+                  value: 'Special',
+                  child: Text('Special'),
+                ),
+                DropdownMenuItem(
+                  value: 'Graduated',
+                  child: Text('Graduated'),
+                ),
+              ],
+            ),
+            const Text(
+              'Stage :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'Primary stage',
+                  child: Text('Primary stage'),
+                ),
+                DropdownMenuItem(
+                  value: 'Middle School',
+                  child: Text('Middle School'),
+                ),
+                DropdownMenuItem(
+                  value: 'High school',
+                  child: Text('High school'),
+                ),
+                DropdownMenuItem(
+                  value: 'University',
+                  child: Text('University'),
+                ),
+              ],
+            ),
+            const Text(
+              'Level :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'Level One',
+                  child: Text('Level One'),
+                ),
+                DropdownMenuItem(
+                  value: 'Level Two',
+                  child: Text('Level Two'),
+                ),
+                DropdownMenuItem(
+                  value: 'Level Three',
+                  child: Text('Level Three'),
+                ),
+              ],
+            ),
+            const Text(
+              'Term :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'first term',
+                  child: Text('first term'),
+                ),
+                DropdownMenuItem(
+                  value: 'Second term',
+                  child: Text('Second term'),
+                ),
+              ],
+            ),
+            const Text(
+              'Subject :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'General',
+                  child: Text('General'),
+                ),
+                DropdownMenuItem(
+                  value: 'Special',
+                  child: Text('Special'),
+                ),
+                DropdownMenuItem(
+                  value: 'Graduated',
+                  child: Text('Graduated'),
+                ),
+              ],
+            ),
+            const Text(
+              'Course availability after purchase :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'limited',
+                  child: Text('limited'),
+                ),
+                DropdownMenuItem(
+                  value: 'Unlimited',
+                  child: Text('Unlimited'),
+                ),
+              ],
+            ),
+            const Text(
+              'Limited period :',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            const MyDropBox(
+              hintText: 'Select One',
+              items: [
+                DropdownMenuItem(
+                  value: 'A week',
+                  child: Text('A week'),
+                ),
+                DropdownMenuItem(
+                  value: '2 weeks',
+                  child: Text('2 weeks'),
+                ),
+                DropdownMenuItem(
+                  value: 'Month',
+                  child: Text('Month'),
+                ),
+                DropdownMenuItem(
+                  value: '2 month',
+                  child: Text('2 month'),
+                ),
+                DropdownMenuItem(
+                  value: '4 month',
+                  child: Text('4 month'),
+                ),
+                DropdownMenuItem(
+                  value: '6 month',
+                  child: Text('6 month'),
+                ),
+                DropdownMenuItem(
+                  value: '8 month',
+                  child: Text('8 month'),
+                ),
+                DropdownMenuItem(
+                  value: '10 month',
+                  child: Text('10 month'),
+                ),
+                DropdownMenuItem(
+                  value: 'Year ',
+                  child: Text('Year '),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  'Key words :  ',
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
                   width: 188,
                   height: 35,
                   child: TextFormField(
@@ -364,31 +362,29 @@ class _UploadPageState extends State<UploadPage> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       filled: true,
-                      fillColor: const Color(0xffedededed),
+                      fillColor: const Color.fromARGB(236, 237, 237, 237),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const Text(
-                'Price :',
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
-              ),
-              Form(
-                child: SizedBox(
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  'Price :',
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
                   width: 188,
                   height: 35,
                   child: TextFormField(
@@ -405,56 +401,56 @@ class _UploadPageState extends State<UploadPage> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       filled: true,
-                      fillColor: const Color(0xffedededed),
+                      fillColor: const Color.fromARGB(236, 240, 239, 239),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Add course photo :',
-              style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500),
+              ],
             ),
-          ),
-          GestureDetector(
-            onTap: uploadImage,
-            child: Container(
-              height: 64,
-              width: 148,
-              margin: const EdgeInsets.only(left: 50, right: 50),
-              decoration: BoxDecoration(
-                color: ColorManager.lightGray,
-                border: Border.all(
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Add course photo :',
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+            GestureDetector(
+              onTap: uploadImage,
+              child: Container(
+                height: 64,
+                width: 148,
+                margin: const EdgeInsets.only(left: 50, right: 50),
+                decoration: BoxDecoration(
                   color: ColorManager.lightGray,
-                  width: 1,
+                  border: Border.all(
+                    color: ColorManager.lightGray,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Center(
-                child: Text(
-                  '+',
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                child: const Center(
+                  child: Text(
+                    '+',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
-          ),
-          MyNavigatorButton(
-              textColor: Colors.white,
-              onTap: () => showAlert(),
-              height: 41,
-              width: 283,
-              color: ColorManager.mainGreen,
-              text: 'Save')
-        ],
+            MyNavigatorButton(
+                textColor: Colors.white,
+                onTap: () => showAlert(),
+                height: 41,
+                width: 283,
+                color: ColorManager.mainGreen,
+                text: 'Save')
+          ],
+        ),
       ),
     );
   }

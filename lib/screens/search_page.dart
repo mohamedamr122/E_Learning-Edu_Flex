@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../classes/class_color.dart';
-import '../components/firstcategories.dart';
-import '../components/secondcategories.dart';
+import '../components/categories.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  SearchPage({super.key});
   static const String routeName = 'SearchPage';
-
+  final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,14 +14,16 @@ class SearchPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 58),
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(
                 width: 266,
                 height: 42,
                 child: TextField(
+                  controller: searchController,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: const Color(0xffDFDFDF),
+                    fillColor: ColorManager.lightGray,
                     disabledBorder: InputBorder.none,
                     prefixIcon: const Icon(
                       Icons.search_rounded,
@@ -36,7 +37,9 @@ class SearchPage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  searchController.clear();
+                },
                 child: const Text(
                   'Cancel',
                   style: TextStyle(
@@ -48,8 +51,10 @@ class SearchPage extends StatelessWidget {
               ),
             ],
           ),
-          const FirstCategories(),
-          const SecondCategories(),
+          const SizedBox(
+            height: 10,
+          ),
+          const Categories(),
         ],
       ),
     );

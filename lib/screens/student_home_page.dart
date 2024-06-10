@@ -7,6 +7,7 @@ import 'package:new_eduflex/screens/high_school_level_two.dart';
 import 'package:new_eduflex/screens/middle_school_level_one.dart';
 import 'package:new_eduflex/screens/middle_school_level_three.dart';
 import 'package:new_eduflex/screens/middle_school_level_two.dart';
+import 'package:new_eduflex/screens/payment_page.dart';
 import 'package:new_eduflex/screens/primary_stage.dart';
 import 'package:new_eduflex/screens/setting_page.dart';
 import 'package:new_eduflex/screens/skills.dart';
@@ -14,10 +15,9 @@ import 'package:new_eduflex/screens/university.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 import '../classes/class_color.dart';
-import '../components/firstcategories.dart';
+import '../components/categories.dart';
 import '../components/headlinehome.dart';
 import '../components/horizentallistview.dart';
-import '../components/secondcategories.dart';
 import '../components/selected_side_menu.dart';
 import '../components/side_menu_drop.dart';
 import 'account_page.dart';
@@ -260,25 +260,37 @@ class _StudentHomePageState extends State<StudentHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.account_circle,
-                      size: 35,
-                    ),
-                    onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const AccountPage()),
-                    ),
-                    color: const Color(0xff434343),
-                  ),
-                  const Text(
-                    'Hi\nMohanad',
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFF263238),
-                    ),
+                  Wrap(
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(
+                              Icons.account_circle,
+                              size: 40,
+                            ),
+                            onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const AccountPage()),
+                            ),
+                            color: const Color(0xff434343),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          const Text(
+                            'Hi\nMohanad',
+                            style: TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF263238),
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -290,24 +302,39 @@ class _StudentHomePageState extends State<StudentHomePage> {
                       EduFlexLogo(),
                     ],
                   ),
-                  const Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 35,
-                    color: Color(0xff434343),
+                  Wrap(
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, PaymentPage.routeName);
+                            },
+                            icon: Image.asset(
+                              'assets/icons/Shopping.png',
+                              width: 26,
+                              height: 26,
+                              color: Colors.black,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              final state = _sideMenuKey.currentState;
+                              if (state!.isOpened) {
+                                state.closeSideMenu();
+                              } else {
+                                state.openSideMenu();
+                              }
+                            },
+                            icon: const Icon(Icons.menu),
+                            color: Colors.black,
+                            iconSize: 35,
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                  IconButton(
-                    onPressed: () {
-                      final state = _sideMenuKey.currentState;
-                      if (state!.isOpened) {
-                        state.closeSideMenu();
-                      } else {
-                        state.openSideMenu();
-                      }
-                    },
-                    icon: const Icon(Icons.menu),
-                    color: const Color(0xff434343),
-                    iconSize: 35,
-                  )
                 ],
               ),
             ),
@@ -367,8 +394,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
               endIndent: 315,
               indent: 25,
             ),
-            const FirstCategories(),
-            const SecondCategories(),
+            const Categories(),
             const Divider(
               thickness: 2,
               color: Color(0xFF757575),

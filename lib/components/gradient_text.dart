@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:new_eduflex/classes/class_color.dart';
 
 class GradientText extends StatelessWidget {
   const GradientText({super.key, required this.text});
   final String text;
   final LinearGradient _gradient = const LinearGradient(colors: [
-    Color(0xff00BF63),
+    ColorManager.mainGreen,
     Color(0xffF2F2F2),
   ]);
   @override

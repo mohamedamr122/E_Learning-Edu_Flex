@@ -30,8 +30,9 @@ TextEditingController lastNameController = TextEditingController();
 TextEditingController roleController = TextEditingController();
 TextEditingController stageController = TextEditingController();
 TextEditingController levelController = TextEditingController();
-
-final _formKey = GlobalKey<FormState>();
+// RegExp regex =
+//     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+final GlobalKey<FormState> _formKey = GlobalKey();
 
 class _StudentSignupPageState extends State<StudentSignupPage> {
   String? educationSelected;
@@ -151,7 +152,7 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                               email.isEmpty ||
                               !email.contains('@') ||
                               !email.contains('.')) {
-                            return 'Invalid Email';
+                            return 'Email is required';
                           }
                           return null;
                         },
@@ -163,16 +164,15 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                     padding: const EdgeInsets.only(bottom: 16),
                     child: MyPasswordField(
                       validator: (password) {
-                        RegExp regex = RegExp(
-                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                         var passNonNullValue = password ?? "";
                         if (passNonNullValue.isEmpty) {
                           return ("Password is required");
-                        } else if (passNonNullValue.length < 8) {
-                          return ("Password Must be more than 5 characters");
-                        } else if (!regex.hasMatch(passNonNullValue)) {
-                          return ("Password should contain upper,lower,digit and Special character ");
+                        } else if (passNonNullValue.length <= 8) {
+                          return ("Password Must be more than or equal 8 characters");
                         }
+                        // else if (!regex.hasMatch(passNonNullValue)) {
+                        //   return ("Password should contain upper,lower,digit and Special character ");
+                        // }
                         return null;
                       },
                       controller: passwordController,

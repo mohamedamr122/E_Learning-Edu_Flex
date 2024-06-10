@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../classes/class_color.dart';
 import '../components/headlinehome.dart';
@@ -12,6 +13,7 @@ class ChangePasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
@@ -65,16 +67,21 @@ class ChangePasswordPage extends StatelessWidget {
           ),
           MyNavigatorButton(
               textColor: Colors.white,
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
               height: 42,
-              width: 331,
+              width: 345,
               color: ColorManager.mainGreen,
               text: 'Confirm'),
           MyNavigatorButton(
+              border: Border.all(color: Colors.grey),
               textColor: ColorManager.forgotGray,
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
               height: 42,
-              width: 331,
+              width: 345,
               color: Colors.white,
               text: 'Cancel'),
         ],

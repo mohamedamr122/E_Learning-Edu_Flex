@@ -87,15 +87,17 @@ class _NewPasswordState extends State<NewPassword> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: MyNavigatorButton(
-                textColor: Colors.white,
-                onTap: () {
-                  showAlert();
-                },
-                height: 52,
-                width: 242,
-                color: ColorManager.mainGreen,
-                text: 'Submit'),
+            child: Center(
+              child: MyNavigatorButton(
+                  textColor: Colors.white,
+                  onTap: () {
+                    showAlert();
+                  },
+                  height: 52,
+                  width: 242,
+                  color: ColorManager.mainGreen,
+                  text: 'Submit'),
+            ),
           )
         ],
       ),

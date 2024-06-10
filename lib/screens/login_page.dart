@@ -21,7 +21,9 @@ class LoginPage extends StatefulWidget {
 
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
-final _formlKey = GlobalKey<FormState>();
+final GlobalKey<FormState> _formlKey = GlobalKey();
+// RegExp regex =
+//     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
 class _LoginPageState extends State<LoginPage> {
   String? email;
@@ -34,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(16),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is LoginLoadingState) {
+            if (state is LoginSuccessState) {
               Navigator.pushNamed(context, LayoutStudentPage.routeName);
             } else if (state is LoginFailedState) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -85,16 +87,15 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(bottom: 4),
                     child: MyPasswordField(
                       validator: (password) {
-                        RegExp regex = RegExp(
-                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                         var passNonNullValue = password ?? "";
                         if (passNonNullValue.isEmpty) {
                           return ("Password is required");
-                        } else if (passNonNullValue.length < 8) {
-                          return ("Password Must be more than 5 characters");
-                        } else if (!regex.hasMatch(passNonNullValue)) {
-                          return ("Password should contain upper,lower,digit and Special character ");
+                        } else if (passNonNullValue.length <= 8) {
+                          return ("Password Must be more than or equal 8 characters");
                         }
+                        // else if (!regex.hasMatch(passNonNullValue)) {
+                        //   return ("Password should contain upper,lower,digit and Special character ");
+                        // }
                         return null;
                       },
                       controller: passwordController,

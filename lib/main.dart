@@ -6,6 +6,7 @@ import 'package:new_eduflex/screens/changepassword_page.dart';
 import 'package:new_eduflex/screens/choose_signup_page.dart';
 import 'package:new_eduflex/screens/course_name_page.dart';
 import 'package:new_eduflex/screens/delete_account_page.dart';
+import 'package:new_eduflex/screens/details_course_buy.dart';
 import 'package:new_eduflex/screens/edit_page.dart';
 import 'package:new_eduflex/screens/forgot_password_page.dart';
 import 'package:new_eduflex/screens/high_school_level_one.dart';
@@ -53,15 +54,11 @@ class EduFlex extends StatefulWidget {
 class _EduFlexState extends State<EduFlex> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthCubit(),
-        )
-      ],
+    return BlocProvider(
+      create: (context) => AuthCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: RatingPage.routeName,
+        initialRoute: DetailsCourseBuy.routeName,
         routes: {
           SplashScreen.routeName: (context) => const SplashScreen(),
           AccountPage.routeName: (context) => const AccountPage(),
@@ -96,7 +93,7 @@ class _EduFlexState extends State<EduFlex> {
           PaymentPage.routeName: (context) => const PaymentPage(),
           PrimaryStagePage.routeName: (context) => const PrimaryStagePage(),
           RatingPage.routeName: (context) => const RatingPage(),
-          SearchPage.routeName: (context) => const SearchPage(),
+          SearchPage.routeName: (context) => SearchPage(),
           SettingPage.routeName: (context) => const SettingPage(),
           SkillsPage.routeName: (context) => const SkillsPage(),
           StudentHomePage.routeName: (context) => const StudentHomePage(),
@@ -108,6 +105,7 @@ class _EduFlexState extends State<EduFlex> {
           UploadPage.routeName: (context) => const UploadPage(),
           VerificationCode.routeName: (context) => const VerificationCode(),
           WishListPage.routeName: (context) => const WishListPage(),
+          DetailsCourseBuy.routeName: (context) => const DetailsCourseBuy(),
         },
       ),
     );

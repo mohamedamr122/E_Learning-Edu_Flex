@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'coursePhoto.dart';
+import 'course_photo.dart';
 
 
 class ListViewHorizntal extends StatelessWidget {

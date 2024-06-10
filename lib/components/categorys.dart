@@ -18,9 +18,11 @@ class CategoryContainer extends StatelessWidget {
           color: Colors.white,
         ),
         child: Center(
-            child: Text(text,
-                style: const TextStyle(
-                    fontSize: 12, fontWeight: FontWeight.w700))),
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+          ),
+        ),
       ),
     );
   }

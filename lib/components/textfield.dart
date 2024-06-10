@@ -26,7 +26,7 @@ class MyTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: textHint,
         enabled: true,
-        focusedBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
         ),
         enabledBorder: OutlineInputBorder(
@@ -36,9 +36,6 @@ class MyTextField extends StatelessWidget {
         filled: true,
         suffixIcon: icon,
         fillColor: ColorManager.lightGray,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
       ),
     );
   }

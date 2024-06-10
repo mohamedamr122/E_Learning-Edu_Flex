@@ -18,7 +18,7 @@ class LayoutStudentPage extends StatefulWidget {
 class _LayoutStudentPageState extends State<LayoutStudentPage> {
   final navPages = [
     const AccountPage(),
-    const SearchPage(),
+     SearchPage(),
     const StudentHomePage(),
     const WishListPage(),
     const MyCoursesPage()
@@ -28,8 +28,12 @@ class _LayoutStudentPageState extends State<LayoutStudentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        unselectedFontSize: 12,
-        selectedLabelStyle: const TextStyle(color: Colors.amber),
+        selectedIconTheme: const IconThemeData(size: 18),
+        unselectedFontSize: 13,
+        selectedLabelStyle: const TextStyle(
+            color: ColorManager.mainGreen,
+            fontSize: 14,
+            fontWeight: FontWeight.w700),
         selectedItemColor: ColorManager.mainGreen,
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:new_eduflex/classes/class_color.dart';
+import 'package:new_eduflex/components/gradient_text.dart';
 import 'package:new_eduflex/components/navigator_button.dart';
 
 class RatingPage extends StatefulWidget {
@@ -27,7 +27,9 @@ class _RatingPageState extends State<RatingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/images/course_name_screen/course name.png'),
+        title: const GradientText(
+          text: 'Course Name',
+        ),
         centerTitle: true,
       ),
       body: ListView(
@@ -74,47 +76,24 @@ class _RatingPageState extends State<RatingPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  const Row(
                     children: [
-                      const Text(
-                        'comment',
+                      Text(
+                        'Comments',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w700),
-                      ),
-                      PopupMenuButton(
-                        itemBuilder: (context) => [
-                          const PopupMenuItem(
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.delete_outline_rounded,
-                                  color: ColorManager.red,
-                                ),
-                                Text(
-                                  'Delete',
-                                  style: TextStyle(color: ColorManager.red),
-                                )
-                              ],
-                            ),
-                          ),
-                          const PopupMenuItem(
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.edit,
-                                  color: ColorManager.logGrey,
-                                ),
-                                Text(
-                                  'Edit',
-                                  style: TextStyle(color: ColorManager.logGrey),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
                       )
                     ],
+                  ),
+                  Flexible(
+                    child: ListView.builder(
+                      itemCount: _comments.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(_comments[index]),
+                        );
+                      },
+                    ),
                   ),
                   Form(
                     child: TextFormField(
@@ -124,7 +103,11 @@ class _RatingPageState extends State<RatingPage> {
                         hintText: 'Write a comment',
                         filled: true,
                         suffixIcon: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (_controller.text.isNotEmpty) {
+                              _addComment(_controller.text);
+                            }
+                          },
                           icon: const Icon(Icons.send),
                         ),
                         fillColor: const Color(0xffD9D9D9),
@@ -141,9 +124,7 @@ class _RatingPageState extends State<RatingPage> {
           MyNavigatorButton(
               textColor: Colors.white,
               onTap: () {
-                if (_controller.text.isNotEmpty) {
-                  _addComment(_controller.text);
-                }
+                Navigator.pop(context);
               },
               height: 42,
               width: 242,

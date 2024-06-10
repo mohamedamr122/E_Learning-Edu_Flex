@@ -7,8 +7,7 @@ import 'instructor_signup_page.dart';
 
 class ChooseSignUp extends StatelessWidget {
   const ChooseSignUp({super.key});
-    static const routeName = 'ChooseSignUp';
-
+  static const routeName = 'ChooseSignUp';
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +30,8 @@ class ChooseSignUp extends StatelessWidget {
           ),
           MyNavigatorButton(
               textColor: Colors.white,
-              onTap: () => Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                        builder: (context) => const StudentSignupPage()),
-                  ),
+              onTap: () => Navigator.pushReplacementNamed(
+                  context, StudentSignupPage.routeName),
               height: 52,
               width: 243,
               color: ColorManager.mainGreen,
@@ -44,10 +41,8 @@ class ChooseSignUp extends StatelessWidget {
           ),
           MyNavigatorButton(
               textColor: Colors.white,
-              onTap: () => Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                        builder: (context) => const InstructorSignupPage()),
-                  ),
+              onTap: () => Navigator.pushReplacementNamed(
+                  context, InstructorSignupPage.routeName),
               height: 52,
               width: 243,
               color: ColorManager.mainGreen,

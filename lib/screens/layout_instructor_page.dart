@@ -17,7 +17,7 @@ class LayoutInstructorPage extends StatefulWidget {
 class _LayoutInstructorPageState extends State<LayoutInstructorPage> {
   final navPages = [
     const AccountPage(),
-    const SearchPage(),
+     SearchPage(),
     const InstructorHomePage(),
     const TopRatingPage(),
   ];

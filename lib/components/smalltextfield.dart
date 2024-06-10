@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_eduflex/classes/class_color.dart';
 
 class SmallTextField extends StatelessWidget {
   const SmallTextField({
@@ -8,11 +9,12 @@ class SmallTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 42,
+      height: 50,
       width: 142,
       child: TextFormField(
+        textAlign: TextAlign.start,
         decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
+          border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
           ),
           enabledBorder: OutlineInputBorder(
@@ -21,10 +23,7 @@ class SmallTextField extends StatelessWidget {
           ),
           filled: true,
           suffixIcon: null,
-          fillColor: const Color(0xffedededed),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+          fillColor: ColorManager.lightGray,
         ),
       ),
     );

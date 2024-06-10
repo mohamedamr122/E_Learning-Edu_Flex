@@ -69,6 +69,7 @@ flutter:
     - assets/images/toprating_screen/
     - assets/images/upload_course_videos/
     - assets/icons/
+    - assets/images/details_course/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

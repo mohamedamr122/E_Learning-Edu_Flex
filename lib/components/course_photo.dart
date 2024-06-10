@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../screens/course_name_page.dart';
-
+import 'package:new_eduflex/screens/details_course_buy.dart';
 
 class CoursePhoto extends StatelessWidget {
   const CoursePhoto({super.key});
@@ -10,9 +8,7 @@ class CoursePhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const CourseNamePage()),
-        );
+        Navigator.pushNamed(context, DetailsCourseBuy.routeName);
       },
       child: Container(
         width: 162,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/eduflex_logo_text.dart';
 
-import '../components/coursePhoto.dart';
+import '../components/course_photo.dart';
 import 'account_page.dart';
 
 class InstructorHomePage extends StatelessWidget {
@@ -10,9 +10,9 @@ class InstructorHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: CustomScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Container(

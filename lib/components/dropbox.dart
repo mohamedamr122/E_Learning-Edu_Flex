@@ -37,9 +37,11 @@ class _MyDropBoxState extends State<MyDropBox> {
         borderRadius: BorderRadius.circular(5),
         items: widget.items,
         onChanged: (val) {
-          setState(() {
-            selectedValue = val!;
-          });
+          setState(
+            () {
+              selectedValue = val!;
+            },
+          );
         },
       ),
     );

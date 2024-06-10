@@ -22,7 +22,8 @@ class _VerificationCodeState extends State<VerificationCode> {
       type: QuickAlertType.info,
       text: 'Welcome back! Discover now!',
       title: 'Your code confirmed',
-      onConfirmBtnTap: () => Navigator.pushNamed(context,NewPassword.routeName),
+      onConfirmBtnTap: () =>
+          Navigator.pushNamed(context, NewPassword.routeName),
     );
   }
 
