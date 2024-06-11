@@ -6,15 +6,15 @@ import '../components/password.dart';
 import '../components/textfield.dart';
 import 'changepassword_page.dart';
 
-class EditPage extends StatefulWidget {
-  const EditPage({super.key});
-  static const String routeName = 'EditPage';
+class EditPageInstructor extends StatefulWidget {
+  const EditPageInstructor({super.key});
+  static const String routeName = 'EditPageInstructor';
 
   @override
-  State<EditPage> createState() => _EditPageState();
+  State<EditPageInstructor> createState() => _EditPageInstructorState();
 }
 
-class _EditPageState extends State<EditPage> {
+class _EditPageInstructorState extends State<EditPageInstructor> {
   String? educationSelected;
   String? levelSelected;
   String? gradeSelected;
@@ -99,7 +99,9 @@ class _EditPageState extends State<EditPage> {
           ),
           MyNavigatorButton(
               textColor: Colors.white,
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
               height: 42,
               width: 331,
               color: ColorManager.mainGreen,

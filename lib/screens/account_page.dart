@@ -4,7 +4,7 @@ import 'package:new_eduflex/screens/setting_page.dart';
 
 import '../classes/class_color.dart';
 import '../components/itemsbutton.dart';
-import 'edit_page.dart';
+import 'edit_page_instructor.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -60,9 +60,12 @@ class AccountPage extends StatelessWidget {
                   width: 16,
                 ),
                 TextButton(
-                    onPressed: () => Navigator.of(context).push(
+                    onPressed: () =>
+                        //if Student => to EditPageStudent
+                        //if instructor => to EditPageInstructor
+                        Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => const EditPage()),
+                              builder: (context) => const EditPageInstructor()),
                         ),
                     child: const Text(
                       'Edit',

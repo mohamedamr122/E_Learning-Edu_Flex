@@ -228,7 +228,7 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                   ),
                   if (educationSelected == 'General') ...[
                     const MyDropBox(
-                      hintText: 'Level',
+                      hintText: 'Stage',
                       items: [
                         DropdownMenuItem(
                           value: 'Primary level',
@@ -249,19 +249,19 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                       ],
                     ),
                     const MyDropBox(
-                      hintText: 'Grade',
+                      hintText: 'Level',
                       items: [
                         DropdownMenuItem(
-                          value: 'Grade one',
-                          child: Text('Grade one'),
+                          value: 'Level one',
+                          child: Text('Level one'),
                         ),
                         DropdownMenuItem(
-                          value: 'Grade two',
-                          child: Text('Grade two'),
+                          value: 'Level two',
+                          child: Text('Level two'),
                         ),
                         DropdownMenuItem(
-                          value: 'Grade three',
-                          child: Text('Grade three'),
+                          value: 'Level three',
+                          child: Text('Level three'),
                         ),
                       ],
                     ),

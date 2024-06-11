@@ -76,10 +76,13 @@ class _RatingPageState extends State<RatingPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   const Row(
                     children: [
                       Text(
-                        'Comments',
+                        '   Comments',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w700),
                       )

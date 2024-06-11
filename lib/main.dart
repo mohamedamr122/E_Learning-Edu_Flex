@@ -7,7 +7,8 @@ import 'package:new_eduflex/screens/choose_signup_page.dart';
 import 'package:new_eduflex/screens/course_name_page.dart';
 import 'package:new_eduflex/screens/delete_account_page.dart';
 import 'package:new_eduflex/screens/details_course_buy.dart';
-import 'package:new_eduflex/screens/edit_page.dart';
+import 'package:new_eduflex/screens/edit_page_instructor.dart';
+import 'package:new_eduflex/screens/edit_page_student.dart';
 import 'package:new_eduflex/screens/forgot_password_page.dart';
 import 'package:new_eduflex/screens/high_school_level_one.dart';
 import 'package:new_eduflex/screens/high_school_level_three.dart';
@@ -58,7 +59,7 @@ class _EduFlexState extends State<EduFlex> {
       create: (context) => AuthCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: DetailsCourseBuy.routeName,
+        initialRoute: AccountPage.routeName,
         routes: {
           SplashScreen.routeName: (context) => const SplashScreen(),
           AccountPage.routeName: (context) => const AccountPage(),
@@ -66,7 +67,7 @@ class _EduFlexState extends State<EduFlex> {
           ChooseSignUp.routeName: (context) => const ChooseSignUp(),
           CourseNamePage.routeName: (context) => const CourseNamePage(),
           DeleteAccountPage.routeName: (context) => const DeleteAccountPage(),
-          EditPage.routeName: (context) => const EditPage(),
+          EditPageInstructor.routeName: (context) => const EditPageInstructor(),
           ForgotPassword.routeName: (context) => const ForgotPassword(),
           HighSchoolLevelOnePage.routeName: (context) =>
               const HighSchoolLevelOnePage(),
@@ -106,6 +107,7 @@ class _EduFlexState extends State<EduFlex> {
           VerificationCode.routeName: (context) => const VerificationCode(),
           WishListPage.routeName: (context) => const WishListPage(),
           DetailsCourseBuy.routeName: (context) => const DetailsCourseBuy(),
+          EditPageStudent.routeName: (context) => const EditPageStudent(),
         },
       ),
     );
