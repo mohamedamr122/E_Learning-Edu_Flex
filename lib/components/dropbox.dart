@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 
 class MyDropBox extends StatefulWidget {
   const MyDropBox({super.key, required this.items, required this.hintText});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/classes/class_color.dart';
+import 'package:new_eduflex/constants/class_color.dart';
 
 class TapViewerTerms extends StatelessWidget {
   const TapViewerTerms({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/screens/login_page.dart';
 import 'package:new_eduflex/screens/student_signup_page.dart';
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import '../components/maintext.dart';
 import '../components/navigator_button.dart';
 import 'instructor_signup_page.dart';

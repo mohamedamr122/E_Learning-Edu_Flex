@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
 import 'package:new_eduflex/screens/layout_student_page.dart';
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import '../components/maintext.dart';
 import '../components/navigator_button.dart';
 import '../components/password.dart';

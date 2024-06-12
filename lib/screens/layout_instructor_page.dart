@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_eduflex/screens/search_page.dart';
 import 'package:new_eduflex/screens/toprating_page.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import 'account_page.dart';
 import 'instructor_home_page.dart';
 

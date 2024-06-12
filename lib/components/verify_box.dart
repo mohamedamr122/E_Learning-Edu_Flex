@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 
 class VerifyBox extends StatelessWidget {
   const VerifyBox({super.key});

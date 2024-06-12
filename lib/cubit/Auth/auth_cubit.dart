@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:new_eduflex/constants/constants.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  String apiUser = 'https://eduflex-0o5p.onrender.com/api/v1';
   AuthCubit() : super(AuthInitial());
-  void login({
+  Future<dynamic> login({
     required String email,
     required String password,
   }) async {
@@ -33,7 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void register(
+  Future<dynamic> register(
       {required String firstName,
       required String lastName,
       required String email,
@@ -70,7 +70,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void verifyEmail({required String email, required String otp}) async {
+  Future<dynamic> verifyEmail({required String email, required String otp}) async {
     try {
       emit(VerifyLoadingState());
       Response response =
@@ -88,6 +88,62 @@ class AuthCubit extends Cubit<AuthState> {
       emit(
         VerifyFailedState(message: e.toString()),
       );
+    }
+  }
+
+  Future<dynamic> resendOTP({required String email}) async {
+    try {
+      emit(ResendOTPLoadingState());
+      Response response = await http
+          .post(Uri.parse('$apiUser/auth/resend-otp'), body: {'email': email});
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        emit(ResendOTPLoadedState(message: data));
+      }
+    } catch (e) {
+      emit(ResendOTPFailedState(message: e.toString()));
+    }
+  }
+
+  Future<dynamic> forgotPassword({required String email}) async {
+    try {
+      emit(ForgotPasswordLoadingState());
+      Response response = await http.post(
+          Uri.parse('$apiUser/auth/forgot-password'),
+          body: {'email': email});
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        emit(ForgotPasswordLoadedState(message: data));
+      } else {
+        emit(ForgotPasswordFailedState(message: data['message']));
+      }
+    } catch (e) {
+      emit(ForgotPasswordFailedState(message: e.toString()));
+    }
+  }
+
+  Future<dynamic> resetPassword(
+      {required String email,
+      required String resetPasswordOtp,
+      required String newPassword,
+      required String confirmNewPassword}) async {
+    try {
+      emit(ResetPasswordLoadingState());
+      Response response =
+          await http.post(Uri.parse('$apiUser/auth/reset-password'), body: {
+        'email': email,
+        'resetPwOtp': resetPasswordOtp,
+        'newPassword': newPassword,
+        'confirmNewPassword': confirmNewPassword,
+      });
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        emit(ResetPasswordLoadedState());
+      } else {
+        ResetPasswordFailedState(message: data['message']);
+      }
+    } catch (e) {
+      emit(ResetPasswordFailedState(message: e.toString()));
     }
   }
 }

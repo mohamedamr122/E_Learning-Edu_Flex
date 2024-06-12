@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/gradient_text.dart';
 import 'package:new_eduflex/screens/rating_page.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import '../components/navigator_button.dart';
 
 class CourseNamePage extends StatefulWidget {

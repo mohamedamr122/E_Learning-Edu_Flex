@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import '../components/navigator_button.dart';
 import '../components/verify_box.dart';
 import 'new_password_page.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 
 // ignore: must_be_immutable
 class SideMenuDrop extends StatefulWidget {

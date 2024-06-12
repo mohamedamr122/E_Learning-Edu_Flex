@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 
 class SubjectsText extends StatelessWidget {
   final String text;

@@ -14,7 +14,7 @@ import 'package:new_eduflex/screens/skills.dart';
 import 'package:new_eduflex/screens/university.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import '../components/categories.dart';
 import '../components/headlinehome.dart';
 import '../components/horizentallistview.dart';

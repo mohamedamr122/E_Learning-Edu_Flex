@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:new_eduflex/classes/class_color.dart';
+import 'package:new_eduflex/constants/class_color.dart';
 import 'package:new_eduflex/components/comment.dart';
 import 'package:new_eduflex/components/navigator_button.dart';
 import 'package:new_eduflex/screens/newcard_page.dart';

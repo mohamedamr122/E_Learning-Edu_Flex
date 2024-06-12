@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:new_eduflex/classes/class_color.dart';
+import 'package:new_eduflex/constants/class_color.dart';
 import 'package:new_eduflex/components/gradient_text.dart';
 import 'package:new_eduflex/components/navigator_button.dart';
 

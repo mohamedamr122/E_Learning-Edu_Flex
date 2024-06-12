@@ -6,7 +6,7 @@ import 'package:new_eduflex/screens/upload_course_videos.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../classes/class_color.dart';
+import '../constants/class_color.dart';
 import '../components/dropbox.dart';
 import '../components/navigator_button.dart';
 
