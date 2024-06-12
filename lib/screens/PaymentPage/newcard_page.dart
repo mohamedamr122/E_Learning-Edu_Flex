@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../constants/class_color.dart';
-import '../components/navigator_button.dart';
-import '../components/smalltextfield.dart';
-import '../components/textfield.dart';
+import '../../constants/class_color.dart';
+import '../../components/navigator_button.dart';
+import '../../components/smalltextfield.dart';
+import '../../components/textfield.dart';
 
 class NewCardPage extends StatelessWidget {
   const NewCardPage({super.key});

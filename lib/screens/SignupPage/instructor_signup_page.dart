@@ -1,17 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:new_eduflex/screens/layout_instructor_page.dart';
+import 'package:new_eduflex/screens/HomePage/layout_instructor_page.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../constants/class_color.dart';
-import '../components/maintext.dart';
-import '../components/navigator_button.dart';
-import '../components/password.dart';
-import '../components/smalltext.dart';
-import '../components/textfield.dart';
-import 'login_page.dart';
+import '../../constants/class_color.dart';
+import '../../components/maintext.dart';
+import '../../components/navigator_button.dart';
+import '../../components/password.dart';
+import '../../components/smalltext.dart';
+import '../../components/textfield.dart';
+import '../LoginPage/login_page.dart';
 
 class InstructorSignupPage extends StatefulWidget {
   const InstructorSignupPage({super.key});

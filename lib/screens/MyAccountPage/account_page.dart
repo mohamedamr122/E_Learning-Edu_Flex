@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/screens/payment_page.dart';
-import 'package:new_eduflex/screens/setting_page.dart';
+import 'package:new_eduflex/screens/PaymentPage/payment_page.dart';
+import 'package:new_eduflex/screens/MyAccountPage/setting_page.dart';
 
-import '../constants/class_color.dart';
-import '../components/itemsbutton.dart';
+import '../../constants/class_color.dart';
+import '../../components/itemsbutton.dart';
 import 'edit_page_instructor.dart';
 
 class AccountPage extends StatelessWidget {

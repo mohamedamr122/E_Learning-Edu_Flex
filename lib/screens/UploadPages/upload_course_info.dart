@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/gradient_text.dart';
 
-class UploadCourseVideos extends StatelessWidget {
-  const UploadCourseVideos({super.key});
-  static const String routeName = 'UploadCourseVideos';
+class UploadCourseInfo extends StatelessWidget {
+  const UploadCourseInfo({super.key});
+  static const String routeName = 'UploadCourseInfo';
 
   @override
   Widget build(BuildContext context) {

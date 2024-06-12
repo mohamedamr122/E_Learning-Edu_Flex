@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/horizentallistview.dart';
+import '../../components/horizentallistview.dart';
 
 class SkillsPage extends StatelessWidget {
   const SkillsPage({super.key});

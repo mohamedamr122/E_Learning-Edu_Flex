@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/horizentallistview.dart';
+import '../../components/horizentallistview.dart';
 
 class PrimaryStagePage extends StatelessWidget {
   const PrimaryStagePage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'login_page.dart';
+import 'LoginPage/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/dropbox.dart';
 
-import '../constants/class_color.dart';
-import '../components/navigator_button.dart';
-import '../components/password.dart';
-import '../components/textfield.dart';
-import 'changepassword_page.dart';
+import '../../constants/class_color.dart';
+import '../../components/navigator_button.dart';
+import '../../components/password.dart';
+import '../../components/textfield.dart';
+import 'change_password_page.dart';
 
 class EditPageStudent extends StatefulWidget {
   const EditPageStudent({super.key});

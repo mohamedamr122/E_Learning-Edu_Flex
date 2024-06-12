@@ -3,8 +3,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:new_eduflex/constants/class_color.dart';
 import 'package:new_eduflex/components/comment.dart';
 import 'package:new_eduflex/components/navigator_button.dart';
-import 'package:new_eduflex/screens/newcard_page.dart';
-import 'package:new_eduflex/screens/payment_page.dart';
+import 'package:new_eduflex/screens/PaymentPage/newcard_page.dart';
+import 'package:new_eduflex/screens/PaymentPage/payment_page.dart';
 
 class DetailsCourseBuy extends StatelessWidget {
   const DetailsCourseBuy({super.key});

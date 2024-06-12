@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
-import 'package:new_eduflex/screens/verification_code_page.dart';
+import 'package:new_eduflex/screens/ForgotPasswordPage/verification_code_page.dart';
 
-import '../constants/class_color.dart';
-import '../components/navigator_button.dart';
-import '../components/smalltext.dart';
-import '../components/textfield.dart';
+import '../../constants/class_color.dart';
+import '../../components/navigator_button.dart';
+import '../../components/smalltext.dart';
+import '../../components/textfield.dart';
 
 TextEditingController emailController = TextEditingController();
 

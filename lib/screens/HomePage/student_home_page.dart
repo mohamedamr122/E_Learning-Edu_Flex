@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/eduflex_logo_text.dart';
 import 'package:new_eduflex/components/levels_selected.dart';
-import 'package:new_eduflex/screens/high_school_level_one.dart';
-import 'package:new_eduflex/screens/high_school_level_three.dart';
-import 'package:new_eduflex/screens/high_school_level_two.dart';
-import 'package:new_eduflex/screens/middle_school_level_one.dart';
-import 'package:new_eduflex/screens/middle_school_level_three.dart';
-import 'package:new_eduflex/screens/middle_school_level_two.dart';
-import 'package:new_eduflex/screens/payment_page.dart';
-import 'package:new_eduflex/screens/primary_stage.dart';
-import 'package:new_eduflex/screens/setting_page.dart';
-import 'package:new_eduflex/screens/skills.dart';
-import 'package:new_eduflex/screens/university.dart';
+import 'package:new_eduflex/screens/StagesPages/high_school_level_one.dart';
+import 'package:new_eduflex/screens/StagesPages/high_school_level_three.dart';
+import 'package:new_eduflex/screens/StagesPages/high_school_level_two.dart';
+import 'package:new_eduflex/screens/StagesPages/middle_school_level_one.dart';
+import 'package:new_eduflex/screens/StagesPages/middle_school_level_three.dart';
+import 'package:new_eduflex/screens/StagesPages/middle_school_level_two.dart';
+import 'package:new_eduflex/screens/PaymentPage/payment_page.dart';
+import 'package:new_eduflex/screens/StagesPages/primary_stage.dart';
+import 'package:new_eduflex/screens/MyAccountPage/setting_page.dart';
+import 'package:new_eduflex/screens/StagesPages/skills.dart';
+import 'package:new_eduflex/screens/StagesPages/university.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
-import '../constants/class_color.dart';
-import '../components/categories.dart';
-import '../components/headlinehome.dart';
-import '../components/horizentallistview.dart';
-import '../components/selected_side_menu.dart';
-import '../components/side_menu_drop.dart';
-import 'account_page.dart';
+import '../../constants/class_color.dart';
+import '../../components/categories.dart';
+import '../../components/headlinehome.dart';
+import '../../components/horizentallistview.dart';
+import '../../components/selected_side_menu.dart';
+import '../../components/side_menu_drop.dart';
+import '../MyAccountPage/account_page.dart';
 
 class StudentHomePage extends StatefulWidget {
   const StudentHomePage({super.key});

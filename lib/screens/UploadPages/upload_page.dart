@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:new_eduflex/screens/upload_course_videos.dart';
+import 'package:new_eduflex/screens/UploadPages/upload_course_info.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../constants/class_color.dart';
-import '../components/dropbox.dart';
-import '../components/navigator_button.dart';
+import '../../constants/class_color.dart';
+import '../../components/dropbox.dart';
+import '../../components/navigator_button.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({super.key});
@@ -28,7 +28,7 @@ class _UploadPageState extends State<UploadPage> {
       title:
           'The course data and images are being reviewed by the admin, and a response will be made within 10 to 15 minutes.',
       onConfirmBtnTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const UploadCourseVideos()),
+        MaterialPageRoute(builder: (context) => const UploadCourseInfo()),
       ),
     );
   }

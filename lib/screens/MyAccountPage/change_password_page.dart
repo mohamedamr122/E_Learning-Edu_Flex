@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../constants/class_color.dart';
-import '../components/headlinehome.dart';
-import '../components/navigator_button.dart';
-import '../components/password.dart';
+import '../../constants/class_color.dart';
+import '../../components/headlinehome.dart';
+import '../../components/navigator_button.dart';
+import '../../components/password.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});

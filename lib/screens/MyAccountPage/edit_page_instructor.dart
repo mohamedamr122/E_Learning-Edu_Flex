@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../constants/class_color.dart';
-import '../components/navigator_button.dart';
-import '../components/password.dart';
-import '../components/textfield.dart';
-import 'changepassword_page.dart';
+import '../../constants/class_color.dart';
+import '../../components/navigator_button.dart';
+import '../../components/password.dart';
+import '../../components/textfield.dart';
+import 'change_password_page.dart';
 
 class EditPageInstructor extends StatefulWidget {
   const EditPageInstructor({super.key});

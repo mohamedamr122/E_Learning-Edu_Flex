@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../constants/class_color.dart';
-import '../components/navigator_button.dart';
-import '../components/password.dart';
-import '../components/smalltext.dart';
-import 'login_page.dart';
+import '../../constants/class_color.dart';
+import '../../components/navigator_button.dart';
+import '../../components/password.dart';
+import '../../components/smalltext.dart';
+import '../LoginPage/login_page.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({super.key});

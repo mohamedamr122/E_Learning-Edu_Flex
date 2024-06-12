@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../constants/class_color.dart';
-import '../components/dropbox.dart';
-import '../components/navigator_button.dart';
+import '../../constants/class_color.dart';
+import '../../components/dropbox.dart';
+import '../../components/navigator_button.dart';
 import 'delete_account_page.dart';
 
 class SettingPage extends StatefulWidget {

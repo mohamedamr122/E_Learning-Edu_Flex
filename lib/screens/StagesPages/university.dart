@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../components/horizentallistview.dart';
+import '../../components/horizentallistview.dart';
 
 class UniversityPage extends StatelessWidget {
   const UniversityPage({super.key});

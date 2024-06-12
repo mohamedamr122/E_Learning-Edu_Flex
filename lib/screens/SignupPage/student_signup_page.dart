@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
-import 'package:new_eduflex/screens/layout_student_page.dart';
+import 'package:new_eduflex/screens/HomePage/layout_student_page.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../constants/class_color.dart';
-import '../components/dropbox.dart';
-import '../components/maintext.dart';
-import '../components/navigator_button.dart';
-import '../components/password.dart';
-import '../components/smalltext.dart';
-import '../components/textfield.dart';
-import 'login_page.dart';
+import '../../constants/class_color.dart';
+import '../../components/dropbox.dart';
+import '../../components/maintext.dart';
+import '../../components/navigator_button.dart';
+import '../../components/password.dart';
+import '../../components/smalltext.dart';
+import '../../components/textfield.dart';
+import '../LoginPage/login_page.dart';
 
 class StudentSignupPage extends StatefulWidget {
   const StudentSignupPage({super.key});

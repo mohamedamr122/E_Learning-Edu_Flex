@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/screens/skills.dart';
-import 'package:new_eduflex/screens/university.dart';
+import 'package:new_eduflex/screens/StagesPages/skills.dart';
+import 'package:new_eduflex/screens/StagesPages/university.dart';
 
-import '../screens/high_school_level_one.dart';
-import '../screens/middle_school_level_one.dart';
-import '../screens/primary_stage.dart';
+import '../screens/StagesPages/high_school_level_one.dart';
+import '../screens/StagesPages/middle_school_level_one.dart';
+import '../screens/StagesPages/primary_stage.dart';
 import 'levelsclass.dart';
 
 class Categories extends StatelessWidget {

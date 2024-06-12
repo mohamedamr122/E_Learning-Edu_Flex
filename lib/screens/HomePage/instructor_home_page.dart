@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/eduflex_logo_text.dart';
 
-import '../components/course_photo.dart';
-import 'account_page.dart';
+import '../../components/course_photo.dart';
+import '../MyAccountPage/account_page.dart';
 
 class InstructorHomePage extends StatelessWidget {
   const InstructorHomePage({super.key});
