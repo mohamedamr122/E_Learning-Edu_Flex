@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/tap_viewer_terms.dart';
-import 'package:new_eduflex/screens/subjects.dart';
+import 'package:new_eduflex/screens/layoutPages/subjects.dart';
 
 class MiddleSchoolLevelThreePage extends StatelessWidget {
   const MiddleSchoolLevelThreePage({super.key});

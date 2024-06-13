@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/screens/search_page.dart';
-import 'package:new_eduflex/screens/toprating_page.dart';
+import 'package:new_eduflex/screens/layoutPages/search_page.dart';
+import 'package:new_eduflex/screens/layoutPages/toprating_page.dart';
 
 import '../../constants/class_color.dart';
 import '../MyAccountPage/account_page.dart';

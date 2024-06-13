@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/screens/search_page.dart';
-import 'package:new_eduflex/screens/wishlist_page.dart';
+import 'package:new_eduflex/screens/layoutPages/search_page.dart';
+import 'package:new_eduflex/screens/layoutPages/wishlist_page.dart';
 
 import '../../constants/class_color.dart';
 import '../MyAccountPage/account_page.dart';
 import 'student_home_page.dart';
-import '../mycourses_page.dart';
+import '../layoutPages/mycourses_page.dart';
 
 class LayoutStudentPage extends StatefulWidget {
   const LayoutStudentPage({super.key});

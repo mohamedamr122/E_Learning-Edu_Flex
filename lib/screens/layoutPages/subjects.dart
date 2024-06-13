@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/horizentallistview.dart';
-import '../components/subjects_text.dart';
+import '../../components/horizentallistview.dart';
+import '../../components/subjects_text.dart';
 
 class Subjects extends StatelessWidget {
   const Subjects({super.key});

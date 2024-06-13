@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_eduflex/screens/subjects.dart';
+import 'package:new_eduflex/screens/layoutPages/subjects.dart';
 
 class HighSchoolLevelThreePage extends StatelessWidget {
   const HighSchoolLevelThreePage({super.key});
