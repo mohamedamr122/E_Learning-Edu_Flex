@@ -16,7 +16,12 @@ final class LoginFailedState extends AuthState {
 
 final class RegisterLoadingState extends AuthState {}
 
-final class RegisterLoadedState extends AuthState {}
+final class RegisterSuccessState extends AuthState {
+  final String message;
+
+  RegisterSuccessState({required this.message});
+
+}
 
 final class RegisterFailedState extends AuthState {
   final String message;
@@ -26,10 +31,8 @@ final class RegisterFailedState extends AuthState {
 
 final class VerifyLoadingState extends AuthState {}
 
-final class VerifyLoadedState extends AuthState {
-  final String message;
+final class VerifySuccessState extends AuthState {
 
-  VerifyLoadedState({required this.message});
 }
 
 final class VerifyFailedState extends AuthState {

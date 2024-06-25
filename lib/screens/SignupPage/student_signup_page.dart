@@ -1,17 +1,15 @@
+import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
-import 'package:new_eduflex/screens/HomePage/layout_student_page.dart';
-import 'package:quickalert/models/quickalert_type.dart';
-import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../../constants/class_color.dart';
-import '../../components/dropbox.dart';
 import '../../components/maintext.dart';
 import '../../components/navigator_button.dart';
 import '../../components/password.dart';
 import '../../components/smalltext.dart';
 import '../../components/textfield.dart';
+import '../ForgotPasswordPage/verification_code_page.dart';
 import '../LoginPage/login_page.dart';
 
 class StudentSignupPage extends StatefulWidget {
@@ -36,19 +34,10 @@ final GlobalKey<FormState> _formKey = GlobalKey();
 
 class _StudentSignupPageState extends State<StudentSignupPage> {
   String? educationSelected;
-  String? levelSelected;
-  String? gradeSelected;
-  bool isDropdownVisible = false;
+  String? stageSelected;
 
-  showAlert() {
-    QuickAlert.show(
-      context: context,
-      type: QuickAlertType.success,
-      text: 'Welcome back! Discover now!',
-      title: 'You are signed up',
-      onConfirmBtnTap: () => Navigator.pushNamed(context, LoginPage.routeName),
-    );
-  }
+  String? levelSelected;
+  bool isDropdownVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,28 +45,15 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
-          if (state is RegisterLoadedState) {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) => showAlert(),
-              ),
-            );
+          if (state is RegisterSuccessState) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.message)));
+            final email = emailController.text;
+            Navigator.pushNamed(context, VerificationCodePage.routeName,
+                arguments: {'email': email});
           } else if (state is RegisterFailedState) {
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                content: SizedBox(
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                      state.message,
-                      style: const TextStyle(color: Colors.white, fontSize: 22),
-                    ),
-                  ),
-                ),
-                backgroundColor: ColorManager.red,
-              ),
-            );
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         builder: (context, state) {
@@ -170,9 +146,6 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                         } else if (passNonNullValue.length <= 8) {
                           return ("Password Must be more than or equal 8 characters");
                         }
-                        // else if (!regex.hasMatch(passNonNullValue)) {
-                        //   return ("Password should contain upper,lower,digit and Special character ");
-                        // }
                         return null;
                       },
                       controller: passwordController,
@@ -226,44 +199,78 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                       },
                     ),
                   ),
-                  if (educationSelected == 'General') ...[
-                    const MyDropBox(
-                      hintText: 'Stage',
-                      items: [
-                        DropdownMenuItem(
-                          value: 'Primary level',
-                          child: Text('Primary level'),
+                  if (educationSelected == 'General' ||
+                      educationSelected == 'Special') ...[
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.only(bottom: 16),
+                      decoration: BoxDecoration(
+                        color: ColorManager.lightGray,
+                        border: Border.all(
+                          color: ColorManager.logGrey,
+                          width: 1,
                         ),
-                        DropdownMenuItem(
-                          value: 'Middle school',
-                          child: Text('Middle school'),
-                        ),
-                        DropdownMenuItem(
-                          value: 'High school',
-                          child: Text('High school'),
-                        ),
-                        DropdownMenuItem(
-                          value: 'University',
-                          child: Text('University'),
-                        ),
-                      ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: DropdownButtonFormField(
+                        dropdownColor: ColorManager.lightGray,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        hint: const Text('Stage'),
+                        items: [
+                          'Primary level',
+                          'Middle school',
+                          'High school',
+                          'University'
+                        ]
+                            .map((e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(e),
+                                ))
+                            .toList(),
+                        value: stageSelected,
+                        onChanged: (value) {
+                          setState(() {
+                            stageSelected = value!;
+                            isDropdownVisible = true;
+                          });
+                        },
+                      ),
                     ),
-                    const MyDropBox(
-                      hintText: 'Level',
-                      items: [
-                        DropdownMenuItem(
-                          value: 'Level one',
-                          child: Text('Level one'),
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.only(bottom: 16),
+                      decoration: BoxDecoration(
+                        color: ColorManager.lightGray,
+                        border: Border.all(
+                          color: ColorManager.logGrey,
+                          width: 1,
                         ),
-                        DropdownMenuItem(
-                          value: 'Level two',
-                          child: Text('Level two'),
-                        ),
-                        DropdownMenuItem(
-                          value: 'Level three',
-                          child: Text('Level three'),
-                        ),
-                      ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: DropdownButtonFormField(
+                        dropdownColor: ColorManager.lightGray,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        hint: const Text('level'),
+                        items: [
+                          'Level one',
+                          'Level two',
+                          'Level three',
+                        ]
+                            .map((e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(e),
+                                ))
+                            .toList(),
+                        value: levelSelected,
+                        onChanged: (value) {
+                          setState(() {
+                            levelSelected = value!;
+                            isDropdownVisible = true;
+                          });
+                        },
+                      ),
                     ),
                   ],
                   MyNavigatorButton(
@@ -271,8 +278,16 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                     onTap: () {
                       if (passwordController == confirmPasswordController ||
                           _formKey.currentState!.validate()) {
-                        Navigator.pushNamed(
-                            context, LayoutStudentPage.routeName);
+                        BlocProvider.of<AuthCubit>(context).register(
+                            firstName: firstNameController.text,
+                            lastName: lastNameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                            confirmPassword: confirmPasswordController.text,
+                            role: "Student",
+                            education: educationSelected!,
+                            stage: stageSelected,
+                            level: levelSelected);
                       }
                     },
                     height: 60,

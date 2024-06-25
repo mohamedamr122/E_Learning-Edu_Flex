@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import '../constants/class_color.dart';
 
 class VerifyBox extends StatelessWidget {
-  const VerifyBox({super.key});
+  const VerifyBox({super.key, this.controller});
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,9 @@ class VerifyBox extends StatelessWidget {
       height: 49,
       width: 57,
       child: TextFormField(
-        onChanged: (value){
-          if (value.length == 1){
+        controller: controller,
+        onChanged: (value) {
+          if (value.length == 1) {
             FocusScope.of(context).nextFocus();
           }
         },
@@ -31,9 +33,11 @@ class VerifyBox extends StatelessWidget {
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         style: Theme.of(context).textTheme.titleLarge,
-        inputFormatters: [LengthLimitingTextInputFormatter(1),FilteringTextInputFormatter.digitsOnly],
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1),
+          FilteringTextInputFormatter.digitsOnly
+        ],
       ),
-    )
-    ;
+    );
   }
 }

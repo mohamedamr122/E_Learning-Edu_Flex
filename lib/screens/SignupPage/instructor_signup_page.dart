@@ -1,6 +1,12 @@
 import 'dart:io';
+import 'package:http_parser/http_parser.dart';
+import 'package:image/image.dart' as img;
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:new_eduflex/ai_services/id_detection/id_detection_cubit.dart';
+import 'package:new_eduflex/constants/constants.dart';
 import 'package:new_eduflex/screens/HomePage/layout_instructor_page.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
@@ -11,6 +17,7 @@ import '../../components/navigator_button.dart';
 import '../../components/password.dart';
 import '../../components/smalltext.dart';
 import '../../components/textfield.dart';
+import 'dart:typed_data';
 import '../LoginPage/login_page.dart';
 
 class InstructorSignupPage extends StatefulWidget {
@@ -22,6 +29,15 @@ class InstructorSignupPage extends StatefulWidget {
 }
 
 class _InstructorSignupPageState extends State<InstructorSignupPage> {
+
+  void showSnackBar(String message) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   showAlert() {
     QuickAlert.show(
       context: context,
@@ -32,14 +48,6 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
         MaterialPageRoute(builder: (context) => const LayoutInstructorPage()),
       ),
     );
-  }
-
-  File? image;
-  final imagePicker = ImagePicker();
-  uploadImage() async {
-    final pickImage = await imagePicker.pickImage(source: ImageSource.camera);
-
-    image = File(pickImage!.path);
   }
 
   @override
@@ -117,7 +125,7 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
               child: SmallText(text: 'ID'),
             ),
             GestureDetector(
-              onTap: uploadImage,
+              onTap: (){},
               child: Container(
                 margin: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
                 decoration: BoxDecoration(
@@ -129,19 +137,38 @@ class _InstructorSignupPageState extends State<InstructorSignupPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(
-                    child: Text(
-                  '+',
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                )),
+                  child: Text(
+                    '+',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
             ),
-            MyNavigatorButton(
-              textColor: Colors.white,
-              onTap: () => showAlert(),
-              height: 60,
-              width: 252,
-              color: ColorManager.mainGreen,
-              text: 'Create Account',
+            Center(
+              child: GestureDetector(
+                onTap: (){},
+                child: Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  height: 60,
+                  width: 252,
+                  decoration: BoxDecoration(
+                    color: ColorManager.mainGreen,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Create Account',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        fontFamily: 'Roboto',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),

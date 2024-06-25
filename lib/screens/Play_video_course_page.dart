@@ -5,21 +5,21 @@ import 'package:new_eduflex/screens/layoutPages/rating_page.dart';
 import '../constants/class_color.dart';
 import '../components/navigator_button.dart';
 
-class CourseNamePage extends StatefulWidget {
-  const CourseNamePage({super.key});
+class PlayVideoCoursePage extends StatefulWidget {
+  const PlayVideoCoursePage({super.key});
   static const String routeName = 'CourseNamePage';
 
   @override
-  State<CourseNamePage> createState() => _CourseNamePageState();
+  State<PlayVideoCoursePage> createState() => _PlayVideoCoursePageState();
 }
 
-class _CourseNamePageState extends State<CourseNamePage> {
-  GlobalKey<ScaffoldState> scaffoldkey = GlobalKey();
+class _PlayVideoCoursePageState extends State<PlayVideoCoursePage> {
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldkey,
+      key: scaffoldKey,
       endDrawer: Drawer(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: SafeArea(
@@ -39,7 +39,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
                   ),
                   IconButton(
                       onPressed: () {
-                        scaffoldkey.currentState!.closeEndDrawer();
+                        scaffoldKey.currentState!.closeEndDrawer();
                       },
                       icon: const Icon(
                         Icons.menu_rounded,
@@ -198,7 +198,7 @@ class _CourseNamePageState extends State<CourseNamePage> {
           IconButton(
             icon: const Icon(Icons.menu_rounded, size: 35),
             onPressed: () {
-              scaffoldkey.currentState!.openEndDrawer();
+              scaffoldKey.currentState!.openEndDrawer();
             },
           ),
           const SizedBox(
@@ -237,8 +237,8 @@ class _CourseNamePageState extends State<CourseNamePage> {
           MyNavigatorButton(
               textColor: Colors.white,
               onTap: () {},
-              height: 41,
-              width: 212,
+              height: 50,
+              width: 240,
               color: ColorManager.mainGreen,
               text: 'COMPLETE AND Continue >')
         ],

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:new_eduflex/ai_services/comment_detection/comment_detection_cubit.dart';
+import 'package:new_eduflex/ai_services/comment_detection/comment_detection_cubit.dart';
 import 'package:new_eduflex/constants/class_color.dart';
 import 'package:new_eduflex/components/comment.dart';
 import 'package:new_eduflex/components/navigator_button.dart';
@@ -7,7 +10,10 @@ import 'package:new_eduflex/screens/PaymentPage/newcard_page.dart';
 import 'package:new_eduflex/screens/PaymentPage/payment_page.dart';
 
 class DetailsCourseBuy extends StatelessWidget {
-  const DetailsCourseBuy({super.key});
+  final String comment;
+
+  const DetailsCourseBuy({super.key, required this.comment});
+
   static const String routeName = 'DetailsCourseBuy';
 
   @override
@@ -16,7 +22,9 @@ class DetailsCourseBuy extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, PaymentPage.routeName);
+            },
             icon: const Icon(
               Icons.share_outlined,
               color: Colors.black,
@@ -179,15 +187,21 @@ class DetailsCourseBuy extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          const Comment(),
+          Comment(
+            comment: comment,
+          ),
           const SizedBox(
             height: 10,
           ),
-          const Comment(),
+          Comment(
+            comment: comment,
+          ),
           const SizedBox(
             height: 10,
           ),
-          const Comment()
+          Comment(
+            comment: comment,
+          )
         ],
       ),
     );

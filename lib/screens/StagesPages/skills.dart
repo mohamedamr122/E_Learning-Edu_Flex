@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_eduflex/cubit/Courses/courses_cubit.dart';
 
-import '../../components/horizentallistview.dart';
+import '../../components/course_photo.dart';
 
-class SkillsPage extends StatelessWidget {
+
+class SkillsPage extends StatefulWidget {
   const SkillsPage({super.key});
   static const String routeName = 'SkillsPage';
 
+  @override
+  State<SkillsPage> createState() => _SkillsPageState();
+}
+
+class _SkillsPageState extends State<SkillsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +27,16 @@ class SkillsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: const [ListViewHorizntal()],
+        children:  [SizedBox(
+          height: 152,
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return const CoursePhoto();
+            },
+            scrollDirection: Axis.horizontal,
+          ),
+        )],
       ),
     );
   }

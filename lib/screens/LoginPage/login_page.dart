@@ -21,9 +21,7 @@ class LoginPage extends StatefulWidget {
 
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
-final GlobalKey<FormState> _formlKey = GlobalKey();
-// RegExp regex =
-//     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+final GlobalKey<FormState> _formKey = GlobalKey();
 
 class _LoginPageState extends State<LoginPage> {
   String? email;
@@ -48,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
           },
           builder: (context, state) {
             return Form(
-              key: _formlKey,
+              key: _formKey,
               child: ListView(
                 children: [
                   Container(
@@ -90,8 +88,6 @@ class _LoginPageState extends State<LoginPage> {
                         var passNonNullValue = password ?? "";
                         if (passNonNullValue.isEmpty) {
                           return ("Password is required");
-                        } else if (passNonNullValue.length <= 8) {
-                          return ("Password Must be more than or equal 8 characters");
                         }
                         // else if (!regex.hasMatch(passNonNullValue)) {
                         //   return ("Password should contain upper,lower,digit and Special character ");
@@ -118,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                   MyNavigatorButton(
                     textColor: Colors.white,
                     onTap: () {
-                      if (_formlKey.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AuthCubit>(context).login(
                             email: emailController.text,
                             password: passwordController.text);

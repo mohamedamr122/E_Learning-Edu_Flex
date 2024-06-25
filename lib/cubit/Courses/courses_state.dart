@@ -14,15 +14,21 @@ final class CreateCourseFailed extends CoursesState {
 
   CreateCourseFailed({required this.message});
 }
+
 final class GetAllCoursesLoading extends CoursesState {}
 
-final class GetAllCoursesLoaded extends CoursesState {}
+final class GetAllCoursesLoaded extends CoursesState {
+    final List courses;
+
+  GetAllCoursesLoaded({required this.courses});
+}
 
 final class GetAllCoursesFailed extends CoursesState {
   final String message;
 
   GetAllCoursesFailed({required this.message});
 }
+
 final class GetCurrentUserCoursesLoading extends CoursesState {}
 
 final class GetCurrentUserCoursesLoaded extends CoursesState {}
@@ -32,6 +38,7 @@ final class GetCurrentUserCoursesFailed extends CoursesState {
 
   GetCurrentUserCoursesFailed({required this.message});
 }
+
 final class SearchCoursesLoading extends CoursesState {}
 
 final class SearchCoursesLoaded extends CoursesState {}
@@ -41,6 +48,7 @@ final class SearchCoursesFailed extends CoursesState {
 
   SearchCoursesFailed({required this.message});
 }
+
 final class GetSingleCourseLoading extends CoursesState {}
 
 final class GetSingleCourseLoaded extends CoursesState {}
@@ -50,6 +58,7 @@ final class GetSingleCourseFailed extends CoursesState {
 
   GetSingleCourseFailed({required this.message});
 }
+
 final class UpdateCourseLoading extends CoursesState {}
 
 final class UpdateCourseLoaded extends CoursesState {}
@@ -59,6 +68,7 @@ final class UpdateCourseFailed extends CoursesState {
 
   UpdateCourseFailed({required this.message});
 }
+
 final class EnrollInCourseLoading extends CoursesState {}
 
 final class EnrollInCourseLoaded extends CoursesState {}
@@ -68,6 +78,7 @@ final class EnrollInCourseFailed extends CoursesState {
 
   EnrollInCourseFailed({required this.message});
 }
+
 final class GetCourseEnrollmentsLoading extends CoursesState {}
 
 final class GetCourseEnrollmentsLoaded extends CoursesState {}
@@ -77,6 +88,7 @@ final class GetCourseEnrollmentsFailed extends CoursesState {
 
   GetCourseEnrollmentsFailed({required this.message});
 }
+
 final class AddSectionsToCourseLoading extends CoursesState {}
 
 final class AddSectionsToCourseLoaded extends CoursesState {}
@@ -86,6 +98,7 @@ final class AddSectionsToCourseFailed extends CoursesState {
 
   AddSectionsToCourseFailed({required this.message});
 }
+
 final class UpdateSectionTitleLoading extends CoursesState {}
 
 final class UpdateSectionTitleLoaded extends CoursesState {}
@@ -95,6 +108,7 @@ final class UpdateSectionTitleFailed extends CoursesState {
 
   UpdateSectionTitleFailed({required this.message});
 }
+
 final class DeleteSectionFromCourseLoading extends CoursesState {}
 
 final class DeleteSectionFromCourseLoaded extends CoursesState {}
@@ -104,6 +118,7 @@ final class DeleteSectionFromCourseFailed extends CoursesState {
 
   DeleteSectionFromCourseFailed({required this.message});
 }
+
 final class AddVideoToSectionLoading extends CoursesState {}
 
 final class AddVideoToSectionLoaded extends CoursesState {}
@@ -113,6 +128,7 @@ final class AddVideoToSectionFailed extends CoursesState {
 
   AddVideoToSectionFailed({required this.message});
 }
+
 final class UpdateVideoInfoLoading extends CoursesState {}
 
 final class UpdateVideoInfoLoaded extends CoursesState {}
@@ -122,6 +138,7 @@ final class UpdateVideoInfoFailed extends CoursesState {
 
   UpdateVideoInfoFailed({required this.message});
 }
+
 final class DeleteVideoLoading extends CoursesState {}
 
 final class DeleteVideoLoaded extends CoursesState {}

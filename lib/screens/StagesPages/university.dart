@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../components/horizentallistview.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../components/course_photo.dart';
+import '../../cubit/Courses/courses_cubit.dart';
 
-class UniversityPage extends StatelessWidget {
+class UniversityPage extends StatefulWidget {
   const UniversityPage({super.key});
   static const String routeName = 'UniversityPage';
 
+  @override
+  State<UniversityPage> createState() => _UniversityPageState();
+}
+
+class _UniversityPageState extends State<UniversityPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +25,16 @@ class UniversityPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: const [ListViewHorizntal()],
+        children:  [SizedBox(
+          height: 152,
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return const CoursePhoto();
+            },
+            scrollDirection: Axis.horizontal,
+          ),
+        )],
       ),
     );
   }

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/components/tap_viewer_terms.dart';
+import 'package:new_eduflex/cubit/Courses/courses_cubit.dart';
 import 'package:new_eduflex/screens/layoutPages/subjects.dart';
 
-class MiddleSchoolLevelThreePage extends StatelessWidget {
+class MiddleSchoolLevelThreePage extends StatefulWidget {
   const MiddleSchoolLevelThreePage({super.key});
   static const String routeName = 'MiddleSchoolLevelThreePage';
 
+  @override
+  State<MiddleSchoolLevelThreePage> createState() => _MiddleSchoolLevelThreePageState();
+}
+
+class _MiddleSchoolLevelThreePageState extends State<MiddleSchoolLevelThreePage> {
+  void initState(){
+    super.initState();
+    BlocProvider.of<CoursesCubit>(context).getAllCourses();
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

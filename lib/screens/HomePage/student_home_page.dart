@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_eduflex/components/course_photo.dart';
 import 'package:new_eduflex/components/eduflex_logo_text.dart';
 import 'package:new_eduflex/components/levels_selected.dart';
 import 'package:new_eduflex/screens/StagesPages/high_school_level_one.dart';
@@ -17,7 +18,6 @@ import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import '../../constants/class_color.dart';
 import '../../components/categories.dart';
 import '../../components/headlinehome.dart';
-import '../../components/horizentallistview.dart';
 import '../../components/selected_side_menu.dart';
 import '../../components/side_menu_drop.dart';
 import '../MyAccountPage/account_page.dart';
@@ -377,7 +377,16 @@ class _StudentHomePageState extends State<StudentHomePage> {
               endIndent: 175,
               indent: 55,
             ),
-            const ListViewHorizntal(),
+             SizedBox(
+              height: 152,
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return const CoursePhoto();
+                },
+                scrollDirection: Axis.horizontal,
+              ),
+            ),
             const Divider(
               thickness: 1.5,
               color: Color(0xFF757575),

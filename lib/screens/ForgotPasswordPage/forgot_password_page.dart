@@ -25,13 +25,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is VerifyLoadedState) {
-          Navigator.pushNamed(context, VerificationCode.routeName);
+        if (state is ForgotPasswordLoadedState) {
+          final emailForgot = emailController;
+          Navigator.pushNamed(context, VerificationCodePage.routeName,
+              arguments: {'email': emailForgot});
         }
         if (state is VerifyFailedState) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Email is not exsit'),
+              content: Text('Email does not exist'),
             ),
           );
         }
@@ -97,8 +99,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       textColor: Colors.white,
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(context).verifyEmail(
-                              email: emailController.text, otp: '');
+                          BlocProvider.of<AuthCubit>(context)
+                              .forgotPassword(email: emailController.text);
                         }
                       },
                       height: 52,

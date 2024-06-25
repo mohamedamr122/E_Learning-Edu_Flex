@@ -28,7 +28,7 @@ class _UploadPageState extends State<UploadPage> {
       title:
           'The course data and images are being reviewed by the admin, and a response will be made within 10 to 15 minutes.',
       onConfirmBtnTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const UploadCourseInfo()),
+        MaterialPageRoute(builder: (context) => UploadCourseInfo()),
       ),
     );
   }

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_eduflex/cubit/Courses/courses_cubit.dart';
 import 'package:new_eduflex/screens/layoutPages/subjects.dart';
 
-class HighSchoolLevelThreePage extends StatelessWidget {
+class HighSchoolLevelThreePage extends StatefulWidget {
   const HighSchoolLevelThreePage({super.key});
   static const String routeName = 'HighSchoolLevelThreePage';
 
+  @override
+  State<HighSchoolLevelThreePage> createState() => _HighSchoolLevelThreePageState();
+}
+
+class _HighSchoolLevelThreePageState extends State<HighSchoolLevelThreePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

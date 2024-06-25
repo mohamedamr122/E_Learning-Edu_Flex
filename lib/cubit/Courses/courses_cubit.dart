@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:new_eduflex/constants/constants.dart';
+import 'package:new_eduflex/models/course_info_model.dart';
 
 part 'courses_state.dart';
 
@@ -32,7 +32,7 @@ class CoursesCubit extends Cubit<CoursesState> {
       Response response = await http.get(Uri.parse('$apiUser/courses'));
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        emit(GetAllCoursesLoaded());
+        emit(GetAllCoursesLoaded(courses: data));
       } else {
         emit(GetAllCoursesFailed(message: data['message']));
       }

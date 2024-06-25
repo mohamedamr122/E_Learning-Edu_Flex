@@ -8,15 +8,15 @@ import '../../components/password.dart';
 import '../../components/smalltext.dart';
 import '../LoginPage/login_page.dart';
 
-class NewPassword extends StatefulWidget {
-  const NewPassword({super.key});
+class CreateNewPasswordPage extends StatefulWidget {
+  const CreateNewPasswordPage({super.key});
   static const String routeName = 'NewPassword';
 
   @override
-  State<NewPassword> createState() => _NewPasswordState();
+  State<CreateNewPasswordPage> createState() => _CreateNewPasswordPageState();
 }
 
-class _NewPasswordState extends State<NewPassword> {
+class _CreateNewPasswordPageState extends State<CreateNewPasswordPage> {
   showAlert() {
     QuickAlert.show(
       context: context,

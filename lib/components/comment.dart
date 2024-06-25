@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class Comment extends StatelessWidget {
   const Comment({
     super.key,
+    required this.comment,
   });
-
+  final String comment;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,11 +25,11 @@ class Comment extends StatelessWidget {
                 color: const Color(0xffD9D9D9),
                 borderRadius: BorderRadius.circular(5)),
             padding: const EdgeInsets.all(8),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -41,8 +42,8 @@ class Comment extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'omg the video is useful',
-                  style: TextStyle(
+                  comment,
+                  style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: Colors.black),

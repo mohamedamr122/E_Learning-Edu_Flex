@@ -1,30 +1,40 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:new_eduflex/constants/constants.dart';
+import 'package:new_eduflex/shared/local_network.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  Future<dynamic> login({
+  void login({
     required String email,
     required String password,
   }) async {
     try {
       emit(LoginLoadingState());
+      Map<String, String> headers = {'Content-Type': 'application/json'};
+      final msg = jsonEncode({
+        "email": email,
+        "password": password,
+      });
+
       Response response = await http.post(
         Uri.parse('$apiUser/auth/login'),
-        body: {
-          'email': email,
-          'password': password,
-        },
+        headers: headers,
+        body: msg,
       );
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        emit(LoginSuccessState());
+        if (data["message"] == "successfully logged in!") {
+          CashNetwork.insertToCash(key: 'Token', value: data['token']);
+          emit(LoginSuccessState());
+        }
       } else {
         emit(LoginFailedState(message: data['message']));
       }
@@ -41,11 +51,10 @@ class AuthCubit extends Cubit<AuthState> {
       required String confirmPassword,
       required String role,
       required String education,
-      required String stage,
-      required String level}) async {
-    emit(RegisterLoadingState());
-    Response response =
-        await http.post(Uri.parse('$apiUser/auth/register'), body: {
+      required String? stage,
+      required String? level}) async {
+    Map<String, String> headers = {'Content-Type': 'application/json'};
+    final msg = jsonEncode({
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
@@ -56,10 +65,14 @@ class AuthCubit extends Cubit<AuthState> {
       'stage': stage,
       'level': level,
     });
+
+    emit(RegisterLoadingState());
+    Response response = await http.post(Uri.parse('$apiUser/auth/register'),
+        headers: headers, body: msg);
     var data = jsonDecode(response.body);
     try {
-      if (response.statusCode == 200) {
-        emit(RegisterLoadedState());
+      if (response.statusCode == 201) {
+          emit(RegisterSuccessState(message: data['message']));
       } else {
         emit(
           RegisterFailedState(message: data['message']),
@@ -70,17 +83,20 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<dynamic> verifyEmail({required String email, required String otp}) async {
+  Future<dynamic> verifyEmail(
+      {required String email, required String otpCode}) async {
     try {
+      Map<String, String> headers = {'Content-Type': 'application/json'};
+      final msg = jsonEncode({
+        "email": email,
+        "otp": otpCode,
+      });
       emit(VerifyLoadingState());
       Response response =
-          await http.post(Uri.parse('$apiUser/auth/verify-email'), body: {
-        "email": email,
-        "otp": otp,
-      });
+          await http.post(Uri.parse('$apiUser/auth/verify-email'), body:msg,headers: headers);
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        emit(VerifyLoadedState(message: data['otp']));
+        emit(VerifySuccessState());
       } else {
         emit(VerifyFailedState(message: data['message']));
       }
