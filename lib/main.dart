@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_eduflex/ai_services/id_detection/id_detection_cubit.dart';
 import 'package:new_eduflex/cubit/Auth/auth_cubit.dart';
+import 'package:new_eduflex/screens/ForgotPasswordPage/verification_code_forgot_password_page.dart';
 import 'package:new_eduflex/screens/MyAccountPage/account_page.dart';
 import 'package:new_eduflex/screens/MyAccountPage/change_password_page.dart';
 import 'package:new_eduflex/screens/SignupPage/choose_signup_page.dart';
@@ -50,7 +51,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CashNetwork.cashInitialization();
   token = CashNetwork.getCashData(key: 'token');
-  print('Token is $token');
   runApp(const EduFlex());
 }
 
@@ -67,9 +67,6 @@ class _EduFlexState extends State<EduFlex> {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => AuthCubit(),
-          ),
-          BlocProvider(
             create: (context) => CommentDetectionCubit(),
           ),
           BlocProvider(
@@ -78,19 +75,19 @@ class _EduFlexState extends State<EduFlex> {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: ForgotPassword.routeName,
+          initialRoute: InstructorHomePage.routeName,
           routes: {
             SplashScreen.routeName: (context) => const SplashScreen(),
             AccountPage.routeName: (context) => const AccountPage(),
             ChangePasswordPage.routeName: (context) =>
                 const ChangePasswordPage(),
-            ChooseSignUp.routeName: (context) => const ChooseSignUp(),
+            ChooseSignUpPage.routeName: (context) => const ChooseSignUpPage(),
             PlayVideoCoursePage.routeName: (context) =>
                 const PlayVideoCoursePage(),
             DeleteAccountPage.routeName: (context) => const DeleteAccountPage(),
             EditPageInstructor.routeName: (context) =>
                 const EditPageInstructor(),
-            ForgotPassword.routeName: (context) => const ForgotPassword(),
+            ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
             HighSchoolLevelOnePage.routeName: (context) =>
                 const HighSchoolLevelOnePage(),
             HighSchoolLevelTwoPage.routeName: (context) =>
@@ -125,10 +122,12 @@ class _EduFlexState extends State<EduFlex> {
             Subjects.routeName: (context) => const Subjects(),
             TopRatingPage.routeName: (context) => const TopRatingPage(),
             UniversityPage.routeName: (context) => const UniversityPage(),
-            UploadCourseInfo.routeName: (context) => UploadCourseInfo(),
-            UploadPage.routeName: (context) => const UploadPage(),
+            UploadCourseInfo.routeName: (context) => const UploadCourseInfo(),
+            UploadFormPage.routeName: (context) => const UploadFormPage(),
             VerificationCodePage.routeName: (context) =>
                 const VerificationCodePage(),
+            VerificationCodeForgotPasswordPage.routeName: (context) =>
+            const VerificationCodeForgotPasswordPage(),
             WishListPage.routeName: (context) => const WishListPage(),
             DetailsCourseBuy.routeName: (context) =>
                 const DetailsCourseBuy(comment: ''),

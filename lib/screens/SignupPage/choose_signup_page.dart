@@ -6,8 +6,8 @@ import '../../components/maintext.dart';
 import '../../components/navigator_button.dart';
 import 'instructor_signup_page.dart';
 
-class ChooseSignUp extends StatelessWidget {
-  const ChooseSignUp({super.key});
+class ChooseSignUpPage extends StatelessWidget {
+  const ChooseSignUpPage({super.key});
   static const routeName = 'ChooseSignUp';
 
   @override

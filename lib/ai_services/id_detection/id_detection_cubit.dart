@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart'as http;
 
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
@@ -29,7 +31,7 @@ class IdDetectionCubit extends Cubit<IdDetectionState> {
     try {
       final response = await _uploadImage(imageFile);
       if (response.statusCode == 200) {
-        final result = response.data;
+        final result = response.body;
         emit(ImageUploaded(result));
       } else {
         emit(ImageUploadFailed("Failed to upload image"));
@@ -39,11 +41,11 @@ class IdDetectionCubit extends Cubit<IdDetectionState> {
     }
   }
 
-  Future<Response> _uploadImage(File imageFile) async {
+  Future<http.Response> _uploadImage(File imageFile) async {
     final formData = FormData.fromMap({
       'image': await MultipartFile.fromFile(imageFile.path, filename: 'upload.jpg'),
     });
 
-    return await _dio.post('$baseUrl/detect_image', data: formData);
+    return await http.post(Uri.parse('$baseUrl/detect_image'), body: formData);
   }
 }

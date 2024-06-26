@@ -11,7 +11,7 @@ import '../../services/upload_services.dart';
 import '../layoutPages/rating_page.dart';
 
 class UploadCourseInfo extends StatefulWidget {
-  UploadCourseInfo({super.key});
+  const UploadCourseInfo({super.key});
   static const String routeName = 'UploadCourseInfo';
 
   @override
@@ -19,7 +19,7 @@ class UploadCourseInfo extends StatefulWidget {
 }
 
 class _UploadCourseInfoState extends State<UploadCourseInfo> {
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   String _text = "Initial Text";
   String _text2 = "Initial Text";

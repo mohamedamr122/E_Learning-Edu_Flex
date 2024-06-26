@@ -55,10 +55,10 @@ final class ResendOTPFailedState extends AuthState {
 }
 final class ForgotPasswordLoadingState extends AuthState {}
 
-final class ForgotPasswordLoadedState extends AuthState {
+final class ForgotPasswordSuccessState extends AuthState {
   final String message;
 
-  ForgotPasswordLoadedState({required this.message});
+  ForgotPasswordSuccessState({required this.message});
 }
 
 final class ForgotPasswordFailedState extends AuthState {
@@ -69,7 +69,7 @@ final class ForgotPasswordFailedState extends AuthState {
 
 final class ResetPasswordLoadingState extends AuthState {}
 
-final class ResetPasswordLoadedState extends AuthState {
+final class ResetPasswordSuccessState extends AuthState {
 
 }
 

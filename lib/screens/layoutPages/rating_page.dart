@@ -21,7 +21,7 @@ class RatingPage extends StatefulWidget {
 class _RatingPageState extends State<RatingPage> {
   final List<String> _comments = [];
   final TextEditingController _controller = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  final GlobalKey<FormState> _ratingPageFormKey = GlobalKey();
 
   void _addComment(String comment) {
     setState(() {
@@ -33,7 +33,7 @@ class _RatingPageState extends State<RatingPage> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _ratingPageFormKey,
       child: Scaffold(
           appBar: AppBar(
             title: const GradientText(
@@ -168,7 +168,7 @@ class _RatingPageState extends State<RatingPage> {
                   return MyNavigatorButton(
                       textColor: Colors.white,
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {
+                        if (_ratingPageFormKey.currentState!.validate()) {
                           BlocProvider.of<CommentDetectionCubit>(context)
                               .sendComment(_controller.text);
                         }

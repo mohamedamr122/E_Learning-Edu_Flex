@@ -10,15 +10,15 @@ import '../../constants/class_color.dart';
 import '../../components/dropbox.dart';
 import '../../components/navigator_button.dart';
 
-class UploadPage extends StatefulWidget {
-  const UploadPage({super.key});
+class UploadFormPage extends StatefulWidget {
+  const UploadFormPage({super.key});
   static const String routeName = 'UploadPage';
 
   @override
-  State<UploadPage> createState() => _UploadPageState();
+  State<UploadFormPage> createState() => _UploadFormPageState();
 }
 
-class _UploadPageState extends State<UploadPage> {
+class _UploadFormPageState extends State<UploadFormPage> {
   showAlert() {
     QuickAlert.show(
       context: context,
@@ -28,7 +28,7 @@ class _UploadPageState extends State<UploadPage> {
       title:
           'The course data and images are being reviewed by the admin, and a response will be made within 10 to 15 minutes.',
       onConfirmBtnTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => UploadCourseInfo()),
+        MaterialPageRoute(builder: (context) => const UploadCourseInfo()),
       ),
     );
   }
@@ -36,7 +36,7 @@ class _UploadPageState extends State<UploadPage> {
   File? image;
   final imagePicker = ImagePicker();
   uploadImage() async {
-    final pickImage = await imagePicker.pickImage(source: ImageSource.camera);
+    final pickImage = await imagePicker.pickImage(source: ImageSource.gallery);
 
     image = File(pickImage!.path);
   }

@@ -72,7 +72,7 @@ class AuthCubit extends Cubit<AuthState> {
     var data = jsonDecode(response.body);
     try {
       if (response.statusCode == 201) {
-          emit(RegisterSuccessState(message: data['message']));
+        emit(RegisterSuccessState(message: data['message']));
       } else {
         emit(
           RegisterFailedState(message: data['message']),
@@ -92,8 +92,10 @@ class AuthCubit extends Cubit<AuthState> {
         "otp": otpCode,
       });
       emit(VerifyLoadingState());
-      Response response =
-          await http.post(Uri.parse('$apiUser/auth/verify-email'), body:msg,headers: headers);
+      Response response = await http.post(
+          Uri.parse('$apiUser/auth/verify-email'),
+          body: msg,
+          headers: headers);
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
         emit(VerifySuccessState());
@@ -109,9 +111,11 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<dynamic> resendOTP({required String email}) async {
     try {
+      Map<String, String> headers = {'Content-Type': 'application/json'};
+      final msg = jsonEncode({'email': email});
       emit(ResendOTPLoadingState());
-      Response response = await http
-          .post(Uri.parse('$apiUser/auth/resend-otp'), body: {'email': email});
+      Response response = await http.post(Uri.parse('$apiUser/auth/resend-otp'),
+          body: msg, headers: headers);
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
         emit(ResendOTPLoadedState(message: data));
@@ -123,13 +127,16 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<dynamic> forgotPassword({required String email}) async {
     try {
+      Map<String, String> headers = {'Content-Type': 'application/json'};
+      final msg = jsonEncode({'email': email});
       emit(ForgotPasswordLoadingState());
       Response response = await http.post(
           Uri.parse('$apiUser/auth/forgot-password'),
-          body: {'email': email});
+          body: msg,
+          headers: headers);
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        emit(ForgotPasswordLoadedState(message: data));
+        emit(ForgotPasswordSuccessState(message: data['message']));
       } else {
         emit(ForgotPasswordFailedState(message: data['message']));
       }
@@ -140,21 +147,23 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<dynamic> resetPassword(
       {required String email,
-      required String resetPasswordOtp,
+      required String resetPwOtp,
       required String newPassword,
       required String confirmNewPassword}) async {
     try {
-      emit(ResetPasswordLoadingState());
-      Response response =
-          await http.post(Uri.parse('$apiUser/auth/reset-password'), body: {
+      Map<String, String> headers = {'Content-Type': 'application/json'};
+      final msg = jsonEncode({
         'email': email,
-        'resetPwOtp': resetPasswordOtp,
+        'resetPwOtp': resetPwOtp,
         'newPassword': newPassword,
         'confirmNewPassword': confirmNewPassword,
       });
+      emit(ResetPasswordLoadingState());
+      Response response =
+          await http.post(Uri.parse('$apiUser/auth/reset-password'), body: msg,headers: headers);
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        emit(ResetPasswordLoadedState());
+        emit(ResetPasswordSuccessState());
       } else {
         ResetPasswordFailedState(message: data['message']);
       }

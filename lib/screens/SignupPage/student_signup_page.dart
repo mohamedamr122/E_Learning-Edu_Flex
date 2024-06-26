@@ -30,7 +30,7 @@ TextEditingController stageController = TextEditingController();
 TextEditingController levelController = TextEditingController();
 // RegExp regex =
 //     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-final GlobalKey<FormState> _formKey = GlobalKey();
+final GlobalKey<FormState> _studentSignupFormKey = GlobalKey();
 
 class _StudentSignupPageState extends State<StudentSignupPage> {
   String? educationSelected;
@@ -41,26 +41,26 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(),
-      child: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if (state is RegisterSuccessState) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.message)));
-            final email = emailController.text;
-            Navigator.pushNamed(context, VerificationCodePage.routeName,
-                arguments: {'email': email});
-          } else if (state is RegisterFailedState) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.message)));
-          }
-        },
-        builder: (context, state) {
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: Form(
-              key: _formKey,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: BlocProvider(
+        create: (context) => AuthCubit(),
+        child: BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is RegisterSuccessState) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.message)));
+              final email = emailController.text;
+              Navigator.pushNamed(context, VerificationCodePage.routeName,
+                  arguments: {'email': email});
+            } else if (state is RegisterFailedState) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.message)));
+            }
+          },
+          builder: (context, state) {
+            return Form(
+              key: _studentSignupFormKey,
               child: ListView(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -277,7 +277,7 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                     textColor: Colors.white,
                     onTap: () {
                       if (passwordController == confirmPasswordController ||
-                          _formKey.currentState!.validate()) {
+                          _studentSignupFormKey.currentState!.validate()) {
                         BlocProvider.of<AuthCubit>(context).register(
                             firstName: firstNameController.text,
                             lastName: lastNameController.text,
@@ -313,10 +313,8 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                           width: 5,
                         ),
                         GestureDetector(
-                          onTap: () => Navigator.of(context).pop(
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()),
-                          ),
+                          onTap: () => Navigator.pushReplacementNamed(
+                          context, LoginPage.routeName),
                           child: const Text(
                             'Log In',
                             style: TextStyle(
@@ -331,9 +329,9 @@ class _StudentSignupPageState extends State<StudentSignupPage> {
                   ),
                 ],
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

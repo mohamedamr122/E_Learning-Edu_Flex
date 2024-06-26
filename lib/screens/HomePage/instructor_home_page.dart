@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_eduflex/components/eduflex_logo_text.dart';
+import 'package:new_eduflex/components/uploaded_course_container.dart';
+import 'package:new_eduflex/screens/UploadPages/upload_page.dart';
 
 import '../../components/course_photo.dart';
 import '../MyAccountPage/account_page.dart';
@@ -67,6 +69,34 @@ class InstructorHomePage extends StatelessWidget {
                 ),
               ),
             ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const UploadedCourseContainer(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, UploadFormPage.routeName);
+                      },
+                      child: Container(
+                        width: 161,
+                        height: 151,
+                        decoration:
+                            const BoxDecoration(color: Color(0xffD9D9D9)),
+                        child: const Center(
+                            child: Text(
+                          '+',
+                          style: TextStyle(
+                              fontSize: 100, fontWeight: FontWeight.w400),
+                        )),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             SliverGrid.builder(
               itemCount: 10,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -75,7 +105,7 @@ class InstructorHomePage extends StatelessWidget {
                 mainAxisSpacing: 2,
               ),
               itemBuilder: (context, index) {
-                return const CoursePhoto();
+                return const UploadedCourseContainer();
               },
             ),
           ],

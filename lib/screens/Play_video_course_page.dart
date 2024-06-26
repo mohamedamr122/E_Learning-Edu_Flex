@@ -14,7 +14,7 @@ class PlayVideoCoursePage extends StatefulWidget {
 }
 
 class _PlayVideoCoursePageState extends State<PlayVideoCoursePage> {
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
